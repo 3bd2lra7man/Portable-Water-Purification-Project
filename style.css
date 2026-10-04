@@ -320,11 +320,11 @@ body {
 .cover-qr-item {
   display: inline-flex;
   align-items: center;
-  gap: 0.7rem;
+  gap: 0.85rem;
   background: var(--bg-surface);
   border: 1px solid var(--border-medium);
   border-radius: var(--radius-sm);
-  padding: 0.4rem 0.8rem;
+  padding: 0.55rem 1.1rem;
   text-decoration: none;
   box-shadow: var(--shadow-sm);
   transition: all 0.2s ease;
@@ -337,8 +337,8 @@ body {
 }
 
 .cover-qr-img {
-  width: 48px;
-  height: 48px;
+  width: 58px;
+  height: 58px;
   object-fit: contain;
   border-radius: 4px;
   border: 1px solid var(--border-light);
@@ -350,18 +350,20 @@ body {
   display: flex;
   flex-direction: column;
   text-align: right;
+  gap: 0.15rem;
 }
 
 .qr-label {
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-size: 0.98rem;
+  font-weight: 800;
   color: var(--primary-dark);
-  line-height: 1.3;
+  line-height: 1.35;
 }
 
 .qr-sub {
-  font-size: 0.68rem;
+  font-size: 0.82rem;
   font-family: var(--font-latin);
+  font-weight: 600;
   color: var(--text-muted);
   direction: ltr;
   text-align: left;
@@ -1282,6 +1284,27 @@ body {
 
   .sim-body {
     grid-template-columns: 1fr !important;
+  }
+
+  .cover-qr-item {
+    padding: 0.45rem 0.9rem !important;
+    gap: 0.75rem !important;
+    box-shadow: none !important;
+    border: 1px solid #cbd5e1 !important;
+  }
+
+  .cover-qr-img {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .qr-label {
+    font-size: 0.9rem !important;
+    font-weight: 800 !important;
+  }
+
+  .qr-sub {
+    font-size: 0.76rem !important;
   }
 
   /* Margins for standard A4 landscape or portrait printing */

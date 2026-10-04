@@ -1178,56 +1178,108 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   13. Print Optimization (@media print) - Bulletproof A4 Presentation
+   13. Print Optimization (@media print) - Strict 1-Page-Per-Slide Deck
    -------------------------------------------------------------------------- */
 @media print {
-  /* Hide all interactive, non-printable UI */
+  /* 1. Page Setup: Standard A4 Landscape */
+  @page {
+    size: A4 landscape;
+    margin: 8mm 10mm;
+  }
+
+  /* 2. Hide all interactive / non-printable UI completely */
   .floating-controls,
   .slide-nav-dock,
   .btn-copy-code,
   .sim-controls-panel,
-  .image-modal,
+  .image-modal {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+
+  /* Vendor pseudo-element isolated to prevent invalidating standard selectors */
   ::-webkit-scrollbar {
     display: none !important;
   }
 
-  /* Reset layout constraints for natural multi-page rendering */
+  /* 3. Neutralize all scrolling/overflow constraints on root containers */
   html, body {
     background: #ffffff !important;
-    color: #000000 !important;
+    color: #0f172a !important;
     height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
     overflow: visible !important;
-    font-size: 13px !important; /* Scaled down for high density A4 print */
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 11.5px !important; /* Scaled down for high-density A4 landscape */
   }
 
   .presentation-container {
+    display: block !important;
     height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
     overflow: visible !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
     scroll-snap-type: none !important;
+    position: static !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
-  /* Each section is strictly a separate printed page */
+  /* 4. Strict One-Page-Per-Slide Architecture */
   .slide {
-    height: auto !important;
-    min-height: 98vh !important;
-    max-height: none !important;
+    display: block !important;
+    position: relative !important;
+    float: none !important;
+    clear: both !important;
+    width: 100% !important;
+    height: 98vh !important;
+    max-height: 98vh !important;
+    min-height: 92vh !important;
+    box-sizing: border-box !important;
+    padding: 0.6cm 0.9cm !important;
+    margin: 0 !important;
+    border: none !important;
+    border-bottom: none !important;
+    overflow: hidden !important; /* Strictly prevents accidental 2nd page spill */
+    
+    /* Triple-enforced Page Breaks */
+    page-break-before: always !important;
+    break-before: page !important;
     page-break-after: always !important;
     break-after: page !important;
     page-break-inside: avoid !important;
     break-inside: avoid !important;
-    border-bottom: none !important;
-    padding: 1.5cm 1.5cm !important;
-    overflow: visible !important;
-    box-sizing: border-box !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
   }
 
-  /* Last slide doesn't force a trailing blank page */
-  .slide:last-of-type {
+  /* First slide must not force a blank page before it */
+  .slide:first-of-type,
+  #slide-1 {
+    page-break-before: auto !important;
+    break-before: auto !important;
+  }
+
+  /* Last slide must not force a trailing blank page */
+  .slide:last-of-type,
+  #slide-10 {
     page-break-after: auto !important;
     break-after: auto !important;
+  }
+
+  .slide-content-wrapper {
+    height: calc(100% - 45px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
   }
 
   /* Preserve colors and backgrounds in print */
@@ -1236,80 +1288,219 @@ body {
     print-color-adjust: exact !important;
   }
 
-  /* Keep code blocks crisp with Dark Theme intact */
-  .code-container,
+  /* Slide Headers & Footers */
+  .slide-header {
+    margin-bottom: 0.5rem !important;
+    padding-bottom: 0.35rem !important;
+  }
+
+  .slide-title {
+    font-size: 1.35rem !important;
+  }
+
+  .slide-footer {
+    padding-top: 0.3rem !important;
+    margin-top: auto !important;
+    font-size: 0.75rem !important;
+  }
+
+  /* Cards & Typography */
+  .card {
+    box-shadow: none !important;
+    border: 1px solid #cbd5e1 !important;
+    padding: 0.8rem 1rem !important;
+  }
+
+  .card-title {
+    font-size: 0.95rem !important;
+  }
+
+  .card-content {
+    font-size: 0.82rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .card-content li {
+    margin-bottom: 0.3rem !important;
+  }
+
+  .metric-callout {
+    margin: 0.2rem 0 !important;
+  }
+
+  .metric-value {
+    font-size: 1.5rem !important;
+  }
+
+  /* Architecture Slide 4 */
+  .arch-layout {
+    gap: 1rem !important;
+  }
+
+  .arch-image-card {
+    padding: 0.5rem !important;
+  }
+
+  .arch-image-card img {
+    max-height: 220px !important;
+    cursor: default !important;
+  }
+
+  .arch-step-item {
+    padding: 0.45rem 0.7rem !important;
+    gap: 0.6rem !important;
+  }
+
+  .arch-step-item h4 {
+    font-size: 0.88rem !important;
+  }
+
+  .arch-step-item p {
+    font-size: 0.78rem !important;
+    line-height: 1.35 !important;
+  }
+
+  /* BOM Table Slide 6 */
+  .bom-container {
+    max-height: none !important;
+    overflow: visible !important;
+    border: 1px solid var(--border-light) !important;
+  }
+
+  .bom-table {
+    font-size: 0.68rem !important;
+  }
+
+  .bom-table th {
+    padding: 0.35rem 0.5rem !important;
+    background: var(--primary-dark) !important;
+    color: #ffffff !important;
+  }
+
+  .bom-table td {
+    padding: 0.25rem 0.5rem !important;
+  }
+
+  .bom-img-thumb {
+    width: 32px !important;
+    height: 32px !important;
+    cursor: default !important;
+  }
+
+  .bom-total-card {
+    padding: 0.4rem 0.8rem !important;
+    margin-top: 0.35rem !important;
+  }
+
+  .bom-total-label {
+    font-size: 0.88rem !important;
+  }
+
+  .bom-total-value {
+    font-size: 1.2rem !important;
+  }
+
+  /* Code Blocks Slides 7 & 8 */
+  .code-slide-grid {
+    gap: 1rem !important;
+  }
+
+  .code-explanation-card {
+    padding: 0.9rem !important;
+  }
+
+  .code-container {
+    background: #1e1e1e !important;
+    border: 1px solid #333333 !important;
+    border-radius: 6px !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
   .code-container pre,
   .code-container code {
     background: #1e1e1e !important;
     color: #d4d4d4 !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-    max-height: none !important;
-    overflow: visible !important;
-    white-space: pre-wrap !important;
-    word-break: break-all !important;
-    font-size: 0.72rem !important;
-    line-height: 1.35 !important;
+    font-size: 0.68rem !important;
+    line-height: 1.3 !important;
+    max-height: 320px !important;
+    overflow: hidden !important;
   }
 
-  .bom-container {
-    max-height: none !important;
-    overflow: visible !important;
+  /* Energy Comparison Slide 9 */
+  .comparison-table-wrapper {
+    margin-bottom: 0.6rem !important;
   }
 
-  .bom-table {
-    font-size: 0.72rem !important;
+  .comparison-table th {
+    padding: 0.5rem 0.7rem !important;
+    font-size: 0.82rem !important;
   }
 
-  .bom-img-thumb {
-    width: 38px !important;
-    height: 38px !important;
-    cursor: default !important;
-  }
-
-  .card {
-    box-shadow: none !important;
-    border: 1px solid #cbd5e1 !important;
-  }
-
-  .arch-image-card img {
-    max-height: 280px !important;
-    cursor: default !important;
+  .comparison-table td {
+    padding: 0.45rem 0.7rem !important;
+    font-size: 0.8rem !important;
   }
 
   .sim-widget {
     border: 1px solid #cbd5e1 !important;
     box-shadow: none !important;
+    padding: 0.45rem 0.8rem !important;
+    margin-bottom: 0.5rem !important;
   }
 
   .sim-body {
     grid-template-columns: 1fr !important;
   }
 
+  .sim-readouts-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.5rem !important;
+  }
+
+  .sim-metric-val {
+    font-size: 1.15rem !important;
+  }
+
+  /* QR Cards Slide 1 */
+  .cover-qr-group {
+    margin-top: 0.8rem !important;
+    gap: 1rem !important;
+  }
+
   .cover-qr-item {
-    padding: 0.45rem 0.9rem !important;
-    gap: 0.75rem !important;
+    padding: 0.4rem 0.8rem !important;
+    gap: 0.7rem !important;
     box-shadow: none !important;
     border: 1px solid #cbd5e1 !important;
   }
 
   .cover-qr-img {
-    width: 50px !important;
-    height: 50px !important;
+    width: 46px !important;
+    height: 46px !important;
   }
 
   .qr-label {
-    font-size: 0.9rem !important;
+    font-size: 0.88rem !important;
     font-weight: 800 !important;
   }
 
   .qr-sub {
-    font-size: 0.76rem !important;
+    font-size: 0.74rem !important;
   }
 
-  /* Margins for standard A4 landscape or portrait printing */
-  @page {
-    size: A4 landscape;
-    margin: 10mm;
+  /* Conclusion Slide 10 */
+  .conclusion-summary-box {
+    padding: 0.8rem 1rem !important;
+    margin-bottom: 0.8rem !important;
+  }
+
+  .conclusion-summary-box h4 {
+    font-size: 0.98rem !important;
+  }
+
+  .conclusion-summary-box p {
+    font-size: 0.82rem !important;
   }
 }
+

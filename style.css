@@ -171,7 +171,7 @@ body {
   color: var(--primary-dark);
   font-family: var(--font-latin);
   font-weight: 700;
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   padding: 0.35rem 0.8rem;
   border-radius: var(--radius-sm);
   border: 1px solid rgba(3, 105, 161, 0.2);
@@ -184,7 +184,7 @@ body {
   border-top: 1px solid var(--border-light);
   padding-top: 0.7rem;
   margin-top: auto;
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   color: var(--text-muted);
 }
 
@@ -313,36 +313,37 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1.2rem;
-  margin-top: 1.2rem;
+  gap: 1.8rem;
+  margin-top: 1.6rem;
 }
 
 .cover-qr-item {
   display: inline-flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 1.25rem;
   background: var(--bg-surface);
   border: 1px solid var(--border-medium);
-  border-radius: var(--radius-sm);
-  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1.6rem;
   text-decoration: none;
-  box-shadow: var(--shadow-sm);
-  transition: all 0.2s ease;
+  box-shadow: var(--shadow-md);
+  transition: all 0.25s ease;
 }
 
 .cover-qr-item:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   border-color: var(--primary);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
 }
 
 .cover-qr-img {
-  width: 58px;
-  height: 58px;
+  width: 125px;
+  height: 125px;
   object-fit: contain;
-  border-radius: 4px;
+  border-radius: 8px;
   border: 1px solid var(--border-light);
   background: #ffffff;
+  padding: 4px;
   display: block;
 }
 
@@ -350,18 +351,18 @@ body {
   display: flex;
   flex-direction: column;
   text-align: right;
-  gap: 0.15rem;
+  gap: 0.35rem;
 }
 
 .qr-label {
-  font-size: 0.98rem;
+  font-size: 1.22rem;
   font-weight: 800;
   color: var(--primary-dark);
   line-height: 1.35;
 }
 
 .qr-sub {
-  font-size: 0.82rem;
+  font-size: 0.98rem;
   font-family: var(--font-latin);
   font-weight: 600;
   color: var(--text-muted);
@@ -520,7 +521,7 @@ body {
 
 .arch-caption {
   margin-top: 0.6rem;
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--text-muted);
   font-family: var(--font-latin);
@@ -537,7 +538,7 @@ body {
   background: var(--bg-surface);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-sm);
-  padding: 0.75rem 1rem;
+  padding: 0.8rem 1.1rem;
   display: flex;
   gap: 0.9rem;
   align-items: flex-start;
@@ -549,9 +550,9 @@ body {
   color: var(--primary-dark);
   font-family: var(--font-latin);
   font-weight: 800;
-  font-size: 0.9rem;
-  width: 26px;
-  height: 26px;
+  font-size: 0.95rem;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -560,77 +561,199 @@ body {
 }
 
 .step-info h4 {
-  font-size: 0.95rem;
+  font-size: 1.02rem;
   font-weight: 700;
   color: var(--primary-dark);
   margin-bottom: 0.2rem;
 }
 
 .step-info p {
-  font-size: 0.85rem;
+  font-size: 0.92rem;
   color: var(--text-secondary);
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
 /* --------------------------------------------------------------------------
-   8. Slide 6: Bill of Materials (BOM) Table
+   8. Slide 6: Bill of Materials (BOM) - Dual-Column Hardware Showcase
    -------------------------------------------------------------------------- */
+.bom-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem 1.1rem;
+  max-width: 100%;
+}
+
+.bom-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 0.6rem 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bom-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-light);
+}
+
+.bom-card-img-wrap {
+  width: 95px;
+  height: 90px;
+  flex-shrink: 0;
+  background: #ffffff;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border-medium);
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.bom-card-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  cursor: zoom-in;
+  transition: transform 0.25s ease;
+}
+
+.bom-card:hover .bom-card-img {
+  transform: scale(1.15);
+}
+
+.bom-card-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.bom-card-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.bom-card-name {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+  line-height: 1.25;
+}
+
+.bom-card-sub {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.bom-card-desc {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.35;
+  margin-top: 0.1rem;
+}
+
+.bom-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.3rem;
+  padding-top: 0.3rem;
+  border-top: 1px dashed var(--border-light);
+}
+
+.bom-card-store {
+  font-size: 0.80rem;
+  background: var(--bg-surface-elevated);
+  padding: 0.15rem 0.55rem;
+  border-radius: 4px;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-light);
+}
+
+.bom-card-price {
+  font-family: var(--font-latin);
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: #0284c7;
+  direction: ltr;
+}
+
+/* Fallback table styles */
 .bom-container {
   background: var(--bg-surface);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
   overflow-y: auto;
-  max-height: 520px;
+  max-height: 540px;
 }
 
 .bom-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.82rem;
+  font-size: 0.94rem;
   text-align: right;
 }
 
 .bom-table th {
   background: var(--primary-dark);
   color: #ffffff;
-  padding: 0.7rem 0.8rem;
+  padding: 0.8rem 1rem;
   font-weight: 700;
+  font-size: 0.96rem;
   position: sticky;
   top: 0;
   z-index: 10;
 }
 
 .bom-table td {
-  padding: 0.55rem 0.8rem;
+  padding: 0.7rem 1rem;
   border-bottom: 1px solid var(--border-light);
   vertical-align: middle;
 }
 
-.bom-table tr:hover {
-  background-color: var(--bg-surface-elevated);
+.bom-table strong {
+  font-size: 0.98rem;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.bom-subtext {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  display: block;
+  margin-top: 0.2rem;
+  line-height: 1.35;
 }
 
 .bom-img-thumb {
-  width: 46px;
-  height: 46px;
-  object-fit: cover;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-medium);
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
   background: #ffffff;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border-medium);
+  padding: 3px;
   display: block;
-  transition: transform 0.2s ease;
+  margin: 0 auto;
   cursor: zoom-in;
-}
-
-.bom-img-thumb:hover {
-  transform: scale(1.15);
-  box-shadow: var(--shadow-md);
 }
 
 .bom-price {
   font-family: var(--font-latin);
   font-weight: 700;
+  font-size: 1.05rem;
   color: var(--primary);
   direction: ltr;
   text-align: left;
@@ -638,11 +761,12 @@ body {
 }
 
 .bom-source-tag {
-  font-size: 0.72rem;
+  font-size: 0.84rem;
   background: var(--bg-surface-elevated);
-  padding: 0.2rem 0.5rem;
+  padding: 0.25rem 0.65rem;
   border-radius: 4px;
-  color: var(--text-muted);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-light);
   display: inline-block;
   white-space: nowrap;
 }
@@ -653,19 +777,19 @@ body {
   align-items: center;
   background: linear-gradient(90deg, #0c4a6e 0%, #0369a1 100%);
   color: #ffffff;
-  padding: 0.8rem 1.4rem;
+  padding: 0.9rem 1.6rem;
   border-radius: var(--radius-md);
-  margin-top: 0.8rem;
+  margin-top: 0.9rem;
 }
 
 .bom-total-label {
-  font-size: 1.05rem;
+  font-size: 1.12rem;
   font-weight: 700;
 }
 
 .bom-total-value {
   font-family: var(--font-latin);
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: 800;
   letter-spacing: 0.02em;
 }
@@ -701,20 +825,21 @@ body {
 .code-feature-box {
   background: var(--bg-surface-elevated);
   border-right: 3px solid var(--primary);
-  padding: 0.6rem 0.8rem;
+  padding: 0.65rem 0.9rem;
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 
 .code-feature-box h5 {
-  font-size: 0.88rem;
+  font-size: 0.96rem;
   font-weight: 700;
   color: var(--primary-dark);
 }
 
 .code-feature-box p {
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   color: var(--text-secondary);
-  margin-top: 0.2rem;
+  margin-top: 0.25rem;
+  line-height: 1.45;
 }
 
 .code-container {
@@ -731,13 +856,13 @@ body {
 
 .code-header-bar {
   background: #252526;
-  padding: 0.45rem 1rem;
+  padding: 0.5rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #333333;
   font-family: var(--font-latin);
-  font-size: 0.78rem;
+  font-size: 0.84rem;
   color: #cccccc;
 }
 
@@ -751,16 +876,16 @@ body {
   background: #333333;
   color: #d4d4d4;
   border: 1px solid #444444;
-  padding: 0.2rem 0.6rem;
+  padding: 0.25rem 0.65rem;
   border-radius: 4px;
   font-family: var(--font-latin);
-  font-size: 0.72rem;
+  font-size: 0.80rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.35rem;
 }
 
 .btn-copy-code:hover {
@@ -786,9 +911,9 @@ body {
 .code-badge {
   background: #007acc;
   color: #ffffff;
-  padding: 0.15rem 0.5rem;
+  padding: 0.2rem 0.55rem;
   border-radius: 3px;
-  font-size: 0.72rem;
+  font-size: 0.80rem;
   font-weight: 700;
 }
 
@@ -799,7 +924,7 @@ body {
   overflow-y: auto;
   max-height: 480px;
   font-family: var(--font-code) !important;
-  font-size: 0.8rem !important;
+  font-size: 0.85rem !important;
   line-height: 1.5 !important;
 }
 
@@ -818,11 +943,11 @@ body {
 .comparison-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.88rem;
+  font-size: 0.94rem;
 }
 
 .comparison-table th {
-  padding: 0.8rem 1rem;
+  padding: 0.85rem 1rem;
   font-weight: 700;
   text-align: right;
   border-bottom: 2px solid var(--border-light);
@@ -839,7 +964,7 @@ body {
 }
 
 .comparison-table td {
-  padding: 0.75rem 1rem;
+  padding: 0.8rem 1rem;
   border-bottom: 1px solid var(--border-light);
   color: var(--text-secondary);
 }
@@ -853,9 +978,9 @@ body {
   color: #15803d;
   font-weight: 700;
   font-family: var(--font-latin);
-  padding: 0.2rem 0.55rem;
+  padding: 0.25rem 0.65rem;
   border-radius: var(--radius-sm);
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   display: inline-block;
   direction: ltr;
 }
@@ -880,7 +1005,7 @@ body {
 }
 
 .sim-title {
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   font-weight: 700;
   color: var(--primary-dark);
   display: flex;
@@ -891,14 +1016,14 @@ body {
 .sim-badge-live {
   background: #dcfce7;
   color: #166534;
-  font-size: 0.72rem;
+  font-size: 0.80rem;
   font-family: var(--font-latin);
   font-weight: 700;
-  padding: 0.15rem 0.5rem;
+  padding: 0.2rem 0.6rem;
   border-radius: 9999px;
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.35rem;
 }
 
 .sim-badge-live::before {
@@ -938,7 +1063,7 @@ body {
 .sim-control-label {
   display: flex;
   justify-content: space-between;
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--text-secondary);
 }
@@ -984,7 +1109,7 @@ body {
 }
 
 .sim-metric-label {
-  font-size: 0.75rem;
+  font-size: 0.84rem;
   color: var(--text-muted);
   font-weight: 600;
 }
@@ -998,7 +1123,7 @@ body {
 }
 
 .sim-metric-unit {
-  font-size: 0.72rem;
+  font-size: 0.80rem;
   color: var(--text-muted);
   font-weight: 500;
 }
@@ -1023,9 +1148,9 @@ body {
 }
 
 .conclusion-summary-box p {
-  font-size: 0.92rem;
+  font-size: 0.96rem;
   color: #14532d;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 /* --------------------------------------------------------------------------
@@ -1215,7 +1340,7 @@ body {
     overflow-y: visible !important;
     margin: 0 !important;
     padding: 0 !important;
-    font-size: 11.5px !important; /* Scaled down for high-density A4 landscape */
+    font-size: 14.2px !important; /* Large, bold presentation font */
   }
 
   .presentation-container {
@@ -1238,12 +1363,12 @@ body {
     position: relative !important;
     float: none !important;
     clear: both !important;
-    width: 100% !important;
-    height: 98vh !important;
-    max-height: 98vh !important;
-    min-height: 92vh !important;
+    width: 297mm !important;
+    height: 210mm !important;
+    max-height: 210mm !important;
+    min-height: 210mm !important;
     box-sizing: border-box !important;
-    padding: 0.6cm 0.9cm !important;
+    padding: 7mm 12mm 5mm 12mm !important;
     margin: 0 !important;
     border: none !important;
     border-bottom: none !important;
@@ -1290,7 +1415,7 @@ body {
 
   /* Slide Headers & Footers */
   .slide-header {
-    margin-bottom: 0.5rem !important;
+    margin-bottom: 0.45rem !important;
     padding-bottom: 0.35rem !important;
   }
 
@@ -1299,29 +1424,29 @@ body {
   }
 
   .slide-footer {
-    padding-top: 0.3rem !important;
+    padding-top: 0.35rem !important;
     margin-top: auto !important;
-    font-size: 0.75rem !important;
+    font-size: 0.86rem !important;
   }
 
   /* Cards & Typography */
   .card {
     box-shadow: none !important;
     border: 1px solid #cbd5e1 !important;
-    padding: 0.8rem 1rem !important;
+    padding: 0.75rem 0.95rem !important;
   }
 
   .card-title {
-    font-size: 0.95rem !important;
+    font-size: 1.02rem !important;
   }
 
   .card-content {
-    font-size: 0.82rem !important;
-    line-height: 1.4 !important;
+    font-size: 0.90rem !important;
+    line-height: 1.45 !important;
   }
 
   .card-content li {
-    margin-bottom: 0.3rem !important;
+    margin-bottom: 0.32rem !important;
   }
 
   .metric-callout {
@@ -1329,7 +1454,7 @@ body {
   }
 
   .metric-value {
-    font-size: 1.5rem !important;
+    font-size: 1.55rem !important;
   }
 
   /* Architecture Slide 4 */
@@ -1347,20 +1472,20 @@ body {
   }
 
   .arch-step-item {
-    padding: 0.45rem 0.7rem !important;
-    gap: 0.6rem !important;
+    padding: 0.5rem 0.8rem !important;
+    gap: 0.7rem !important;
   }
 
   .arch-step-item h4 {
-    font-size: 0.88rem !important;
+    font-size: 0.94rem !important;
   }
 
   .arch-step-item p {
-    font-size: 0.78rem !important;
-    line-height: 1.35 !important;
+    font-size: 0.86rem !important;
+    line-height: 1.4 !important;
   }
 
-  /* BOM Table Slide 6 */
+  /* BOM Table Slide 6 - Enlarged Images & Clean Readable Typography */
   .bom-container {
     max-height: none !important;
     overflow: visible !important;
@@ -1368,36 +1493,58 @@ body {
   }
 
   .bom-table {
-    font-size: 0.68rem !important;
+    font-size: 0.82rem !important;
   }
 
   .bom-table th {
     padding: 0.35rem 0.5rem !important;
+    font-size: 0.84rem !important;
     background: var(--primary-dark) !important;
     color: #ffffff !important;
   }
 
   .bom-table td {
-    padding: 0.25rem 0.5rem !important;
+    padding: 0.22rem 0.5rem !important;
+  }
+
+  .bom-table strong {
+    font-size: 0.86rem !important;
+  }
+
+  .bom-subtext {
+    font-size: 0.76rem !important;
+    color: #475569 !important;
   }
 
   .bom-img-thumb {
-    width: 32px !important;
-    height: 32px !important;
+    width: 52px !important;
+    height: 52px !important;
+    padding: 2px !important;
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
     cursor: default !important;
   }
 
+  .bom-source-tag {
+    font-size: 0.76rem !important;
+    padding: 0.15rem 0.4rem !important;
+  }
+
+  .bom-price {
+    font-size: 0.86rem !important;
+  }
+
   .bom-total-card {
-    padding: 0.4rem 0.8rem !important;
+    padding: 0.45rem 0.9rem !important;
     margin-top: 0.35rem !important;
   }
 
   .bom-total-label {
-    font-size: 0.88rem !important;
+    font-size: 0.94rem !important;
   }
 
   .bom-total-value {
-    font-size: 1.2rem !important;
+    font-size: 1.25rem !important;
   }
 
   /* Code Blocks Slides 7 & 8 */
@@ -1407,6 +1554,14 @@ body {
 
   .code-explanation-card {
     padding: 0.9rem !important;
+  }
+
+  .code-feature-box h5 {
+    font-size: 0.90rem !important;
+  }
+
+  .code-feature-box p {
+    font-size: 0.82rem !important;
   }
 
   .code-container {
@@ -1421,8 +1576,8 @@ body {
   .code-container code {
     background: #1e1e1e !important;
     color: #d4d4d4 !important;
-    font-size: 0.68rem !important;
-    line-height: 1.3 !important;
+    font-size: 0.75rem !important;
+    line-height: 1.35 !important;
     max-height: 320px !important;
     overflow: hidden !important;
   }
@@ -1434,12 +1589,12 @@ body {
 
   .comparison-table th {
     padding: 0.5rem 0.7rem !important;
-    font-size: 0.82rem !important;
+    font-size: 0.86rem !important;
   }
 
   .comparison-table td {
     padding: 0.45rem 0.7rem !important;
-    font-size: 0.8rem !important;
+    font-size: 0.84rem !important;
   }
 
   .sim-widget {
@@ -1459,34 +1614,34 @@ body {
   }
 
   .sim-metric-val {
-    font-size: 1.15rem !important;
+    font-size: 1.2rem !important;
   }
 
   /* QR Cards Slide 1 */
   .cover-qr-group {
     margin-top: 0.8rem !important;
-    gap: 1rem !important;
+    gap: 1.4rem !important;
   }
 
   .cover-qr-item {
-    padding: 0.4rem 0.8rem !important;
-    gap: 0.7rem !important;
+    padding: 0.6rem 1.2rem !important;
+    gap: 1rem !important;
     box-shadow: none !important;
     border: 1px solid #cbd5e1 !important;
   }
 
   .cover-qr-img {
-    width: 46px !important;
-    height: 46px !important;
+    width: 82px !important;
+    height: 82px !important;
   }
 
   .qr-label {
-    font-size: 0.88rem !important;
+    font-size: 1.05rem !important;
     font-weight: 800 !important;
   }
 
   .qr-sub {
-    font-size: 0.74rem !important;
+    font-size: 0.86rem !important;
   }
 
   /* Conclusion Slide 10 */
@@ -1496,11 +1651,11 @@ body {
   }
 
   .conclusion-summary-box h4 {
-    font-size: 0.98rem !important;
+    font-size: 1.04rem !important;
   }
 
   .conclusion-summary-box p {
-    font-size: 0.82rem !important;
+    font-size: 0.88rem !important;
   }
 }
 

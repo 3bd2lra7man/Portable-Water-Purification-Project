@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ------------------------------------------------------------------------
   const imageModal = document.getElementById('imageModal');
   const modalImg = document.getElementById('modalImageDisplay');
-  const inspectableImages = document.querySelectorAll('.bom-img-thumb, .arch-image-card img');
+  const inspectableImages = document.querySelectorAll('.bom-img-thumb, .bom-card-img, .arch-image-card img');
 
   if (imageModal && modalImg) {
     inspectableImages.forEach(img => {

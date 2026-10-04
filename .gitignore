@@ -1,0 +1,39 @@
+# Executable and large binary installer files
+assets/executable and other files/
+assets/executable and other files/**
+assets/excutable and other files/
+assets/excutable and other files/**
+
+# Global executable and archive binaries (Prevent GitHub >100MB rejection)
+*.exe
+*.msi
+*.dll
+*.iso
+*.bin
+
+# Archives
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+
+# Python environment & cache
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# Operating System metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Local IDE and editor configurations
+.vscode/
+.idea/
+*.swp
+*.swo

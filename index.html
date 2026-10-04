@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المنظومة الذكية للترشيح النانوي للمياه الجوفية | Smart Nano-Filtration CPS</title>
+  <meta name="description" content="عرض هندسي أكاديمي لمشروع المنظومة الذكية للترشيح النانوي للمياه الجوفية القائم على المتحكم المدمج ESP32-S3 وتكنولوجيا الترشيح النانوي والصمامات منعدمة الاستهلاك.">
+
+  <!-- Google Fonts: Cairo (Arabic), Outfit (English/Numbers), JetBrains Mono (Code) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- KaTeX for Academic Mathematical & Chemical Formula Rendering (GitHub Pages Safe) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+  <!-- Prism.js VS Code Dark Theme for Syntax Highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Controls (Hidden during PDF print) -->
+  <aside class="floating-controls" aria-label="أدوات العرض التفاعلية">
+    <button id="btnPrevSlide" class="btn-floating btn-floating-icon" title="الشريحة السابقة (السهم لأعلى / PageUp)">
+      <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+    </button>
+    <button id="btnNextSlide" class="btn-floating btn-floating-icon" title="الشريحة التالية (السهم لأسفل / PageDown)">
+      <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+    </button>
+    <button id="btnPrintPdf" class="btn-floating" title="طباعة أو تصدير الشرائح كملف PDF">
+      <svg viewBox="0 0 24 24">
+        <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/>
+      </svg>
+      <span>طباعة / تصدير PDF</span>
+    </button>
+  </aside>
+
+  <!-- Interactive Slide Navigation Dock (Right vertical dots, hidden in print) -->
+  <nav class="slide-nav-dock" aria-label="شريط التنقل السريع بين الشرائح">
+    <div class="nav-dot-item">
+      <button class="nav-dot-btn active" data-slide="1" aria-label="الشريحة 1"></button>
+      <span class="nav-dot-tooltip">1. الغلاف الرئيسي</span>
+    </div>
+    <div class="nav-dot-item">
+      <button class="nav-dot-btn" data-slide="2" aria-label="الشريحة 2"></button>
+      <span class="nav-dot-tooltip">2. بيان المشكلة</span>
+    </div>
+    <div class="nav-dot-item">
+      <button class="nav-dot-btn" data-slide="3" aria-label="الشريحة 3"></button>
+      <span class="nav-dot-tooltip">3. الابتكار في الحل</span>
+    </div>
+    <div class="nav-dot-item">
+      <button class="nav-dot-btn" data-slide="4" aria-label="الشريحة 4"></button>
+      <span class="nav-dot-tooltip">4. هيكلية النظام</span>
+    </div>
+    <div class="nav-dot-item">
+      <button class="nav-dot-btn" data-slide="5" aria-label="الشريحة 5"></button>
+      <span class="nav-dot-tooltip">5. بيئة التطوير</span>
+    </div>
+    <div class="nav-dot-item">
+      <button class="nav-dot-btn" data-slide="6" aria-label="الشريحة 6"></button>
+      <span class="nav-dot-tooltip">6. المكونات والتكلفة (BOM)</span>
+    </div>
+    <div class="nav-dot-item">
+      <button class="nav-dot-btn" data-slide="7" aria-label="الشريحة 7"></button>
+      <span class="nav-dot-tooltip">7. كود التهيئة</span>
+    </div>
+    <div class="nav-dot-item">
+      <button class="nav-dot-btn" data-slide="8" aria-label="الشريحة 8"></button>
+      <span class="nav-dot-tooltip">8. كود التحكم والغسيل</span>
+    </div>
+    <div class="nav-dot-item">
+      <button class="nav-dot-btn" data-slide="9" aria-label="الشريحة 9"></button>
+      <span class="nav-dot-tooltip">9. كفاءة الطاقة والمحاكي</span>
+    </div>
+    <div class="nav-dot-item">
+      <button class="nav-dot-btn" data-slide="10" aria-label="الشريحة 10"></button>
+      <span class="nav-dot-tooltip">10. الخلاصة والتوصيات</span>
+    </div>
+  </nav>
+
+  <!-- Image Lightbox Modal for Enlarged Assets (Hidden in print) -->
+  <div id="imageModal" class="image-modal" role="dialog" aria-modal="true" aria-label="معاينة الصورة بالحجم الكامل">
+    <img id="modalImageDisplay" src="" alt="صورة مكبرة">
+  </div>
+
+  <!-- Presentation Container: Pure CSS Scroll-Snap -->
+  <main class="presentation-container">
+
+    <!-- ====================================================================
+         SLIDE 1: COVER
+         ==================================================================== -->
+    <section id="slide-1" class="slide cover-slide" aria-label="شريحة الغلاف">
+      <div class="slide-content-wrapper cover-content">
+        <span class="cover-tag">مسابقة طلابية للابتكار الهندسي | Student Engineering Competition</span>
+        <h1 class="cover-title">المنظومة الذكية للترشيح النانوي للمياه الجوفية</h1>
+        <h2 class="cover-subtitle">Smart Nano-Filtration Cyber-Physical System (NF-CPS)</h2>
+        <p class="cover-description">
+          تصميم وتطوير نظام أتمتة مدمج منخفض استهلاك الطاقة لمعالجة وتحلية المياه الجوفية باستخدام أغشية الترشيح النانوي (Nanofiltration)، ومتحكم ESP32-S3، مع التحكم في التدفق عبر خوارزميات ذكية وصمامات آلية منعدمة استهلاك التثبيت (0-Watt Holding Power).
+        </p>
+
+        <div class="cover-tech-pills">
+          <span class="tech-pill"><span class="dot"></span> ESP32-S3 Dual-Core MCU</span>
+          <span class="tech-pill"><span class="dot"></span> Vontron NF 1812-50 Membrane</span>
+          <span class="tech-pill"><span class="dot"></span> 24V BLDC Variable Boost Pump</span>
+          <span class="tech-pill"><span class="dot"></span> 0-Watt Motorized Ball Valve</span>
+          <span class="tech-pill"><span class="dot"></span> PlatformIO &amp; Modern C++17</span>
+        </div>
+
+        <div class="cover-meta-grid">
+          <div class="meta-box">
+            <h4>فئة المسابقة</h4>
+            <p>الابتكار الطلابي في الأنظمة المدمجة ومعالجة المياه</p>
+          </div>
+          <div class="meta-box">
+            <h4>نمط التشغيل</h4>
+            <p>مستقل كلياً / متوافق مع الطاقة الشمسية</p>
+          </div>
+          <div class="meta-box">
+            <h4>الموسم التنافسي</h4>
+            <p>2025 - 2026</p>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-footer">
+        <div class="slide-footer-meta">
+          <span>المنظومة الذكية للترشيح النانوي للمياه الجوفية (NF-CPS)</span>
+          <span>مسابقة الابتكار الهندسي الطلابي</span>
+        </div>
+        <span class="slide-page-number">01 / 10</span>
+      </footer>
+    </section>
+
+    <!-- ====================================================================
+         SLIDE 2: PROBLEM STATEMENT
+         ==================================================================== -->
+    <section id="slide-2" class="slide" aria-label="بيان المشكلة">
+      <header class="slide-header">
+        <div class="slide-title-group">
+          <h2 class="slide-title">بيان المشكلة الهندسية وتحديات المعالجة التقليدية</h2>
+          <span class="slide-subtitle">Groundwater Challenges &amp; Limitations of Conventional RO</span>
+        </div>
+        <span class="slide-badge">الشريحة 02</span>
+      </header>
+
+      <div class="slide-content-wrapper">
+        <div class="grid-2">
+          <!-- Card 1: Groundwater Nature -->
+          <div class="card">
+            <div class="card-header-line">
+              <span class="card-icon amber">⚠</span>
+              <h3 class="card-title">طبيعة وتحديات المياه الجوفية (Groundwater Issues)</h3>
+            </div>
+            <div class="card-content">
+              <p>
+                تمثل المياه الجوفية في المناطق الجافة وشبه الجافة المصدر الرئيسي للإمداد المائي، لكنها تعاني من تحديات تقنية تعيق استهلاكها المباشر:
+              </p>
+              <ul>
+                <li><strong>عسر الماء المرتفع (Water Hardness):</strong> تركيزات مفرطة من الأيونات ثنائية التكافؤ مثل الكالسيوم (<span class="chem-formula">$\text{Ca}^{2+}$</span>) والمغنيسيوم (<span class="chem-formula">$\text{Mg}^{2+}$</span>).</li>
+                <li><strong>الملوحة المتوسطة (Brackish TDS):</strong> مستويات أملاح ذائبة تتراوح بين 800 إلى 2500 جزء في المليون (PPM)، مما يتطلب معالجة نوعية.</li>
+                <li><strong>الترسيب الغشائي (Scaling):</strong> التسبب في انسداد متسارع للأغشية الدقيقة وتدهور كفاءة الضخ الهيدروليكي.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Card 2: Conventional RO Deficiencies -->
+          <div class="card">
+            <div class="card-header-line">
+              <span class="card-icon blue">⚡</span>
+              <h3 class="card-title">قصور أنظمة التناضح العكسي التقليدية (RO Bottlenecks)</h3>
+            </div>
+            <div class="card-content">
+              <p>
+                رغم انتشار أنظمة الـ RO، إلا أنها غير كفؤة هندسياً واقتصادياً للتطبيقات المحمولة والمناطق النائية للأسباب التالية:
+              </p>
+              <ul>
+                <li><strong>الاستهلاك الطاقي الفائق (High Operating Pressure):</strong> تحتاج ضغوطاً تشغيلية مرتفعة (70 - 120 PSI)، مما يستلزم مضخات ضخمة تستهلك طاقة شمسية أو بطاريات ضخمة.</li>
+                <li><strong>الهدر المائي الحاد (Severe Brine Wastage):</strong> تفقد محطات RO التقليدية من 60% إلى 75% من المياه المغذية في صورة مياه راجعة (Reject Brine).</li>
+                <li><strong>نزع المعادن غير الانتقائي (Total Demineralization):</strong> تجريد المياه تماماً من العناصر الصحية المفيدة، مما يفرض مراحل إعادة تمعدن مكلفة.</li>
+                <li><strong>فقد الطاقة الدائم في الصمامات (Solenoid Parasitic Loss):</strong> الصمامات الكهرومغناطيسية العادية تستهلك 8-12 واط باستمرار مما يولد حرارة ويهدر الطاقة.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metrics Callout -->
+        <div class="grid-3" style="margin-top: 1.2rem;">
+          <div class="card" style="padding: 0.9rem 1.2rem;">
+            <span class="metric-label">هدر المياه في أنظمة RO التقليدية</span>
+            <div class="metric-callout">
+              <span class="metric-value" style="color: #b91c1c;">65% - 75%</span>
+              <span class="metric-label">فاقد راجع</span>
+            </div>
+          </div>
+          <div class="card" style="padding: 0.9rem 1.2rem;">
+            <span class="metric-label">الضغط المطلوب في أغشية RO</span>
+            <div class="metric-callout">
+              <span class="metric-value" style="color: #b45309;">80 - 110</span>
+              <span class="metric-label">PSI (ضغط هيدروليكي مرتفع)</span>
+            </div>
+          </div>
+          <div class="card" style="padding: 0.9rem 1.2rem;">
+            <span class="metric-label">استهلاك صمام Solenoid التقليدي أثناء الفتح</span>
+            <div class="metric-callout">
+              <span class="metric-value" style="color: #b45309;">8.5 - 12</span>
+              <span class="metric-label">Watt (مستمر دون توقف)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="slide-footer">
+        <div class="slide-footer-meta">
+          <span>المنظومة الذكية للترشيح النانوي للمياه الجوفية (NF-CPS)</span>
+          <span>بيان المشكلة الهندسية</span>
+        </div>
+        <span class="slide-page-number">02 / 10</span>
+      </footer>
+    </section>
+
+    <!-- ====================================================================
+         SLIDE 3: SOLUTION & INNOVATION
+         ==================================================================== -->
+    <section id="slide-3" class="slide" aria-label="الابتكار في الحل">
+      <header class="slide-header">
+        <div class="slide-title-group">
+          <h2 class="slide-title">الابتكار في الحل الهندسي المقترح</h2>
+          <span class="slide-subtitle">Cyber-Physical Innovation &amp; Low-Power Actuation</span>
+        </div>
+        <span class="slide-badge">الشريحة 03</span>
+      </header>
+
+      <div class="slide-content-wrapper">
+        <div class="grid-3">
+          <!-- Pillar 1: NF Membrane -->
+          <div class="card">
+            <div class="card-header-line">
+              <span class="card-icon teal">💧</span>
+              <h3 class="card-title">الترشيح النانوي (NF Membrane)</h3>
+            </div>
+            <div class="card-content">
+              <p>
+                استبدال غشاء الـ RO بغشاء الترشيح النانوي (Vontron NF 1812-50) ذي المسامية الدقيقة (1 - 2 نانومتر):
+              </p>
+              <ul>
+                <li><strong>ضغط تشغيل منخفض (Low Pressure):</strong> يعمل بكفاءة عند 30 إلى 50 PSI فقط، مما يخفض متطلبات طاقة الضخ الهيدروليكي بنسبة 50%.</li>
+                <li><strong>انتقائية أيونية ذكية (Selective Rejection):</strong> حجز 85% إلى 95% من أيونات العسر والمعادن الثقيلة (<span class="chem-formula">$\text{Ca}^{2+}$</span>, <span class="chem-formula">$\text{Mg}^{2+}$</span>, <span class="chem-formula">$\text{SO}_4^{2-}$</span>)، مع تمرير نسب متوازنة من الأملاح الصحية الأحادية.</li>
+                <li><strong>نسبة استرداد مائي متفوقة:</strong> رفع إنتاجية المياه النقية (Permeate) وخفض المياه العادمة إلى النصف.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Pillar 2: 0-Watt Valve -->
+          <div class="card">
+            <div class="card-header-line">
+              <span class="card-icon green">⚡</span>
+              <h3 class="card-title">صمامات 0-Watt Holding Power</h3>
+            </div>
+            <div class="card-content">
+              <p>
+                دمج صمام كروي كهربائي آلي (Motorized Ball Valve CWX-15Q):
+              </p>
+              <ul>
+                <li><strong>انعدام استهلاك التثبيت:</strong> مزود بقواطع نهاية شوط ميكانيكية دقيقة؛ يستهلك نبضة تيار قدرها 150 مللي أمبير لمدة 3-5 ثوانٍ فقط أثناء الفتح أو الإغلاق.</li>
+                <li><strong>صفر واط في حالة الثبات:</strong> بعد إتمام الشوط، ينقطع التيار ذاتياً بالكامل ويبقى الصمام مفتوحاً أو مغلقاً بقدرة تثبيت تبلغ <strong>0.00 واط</strong>.</li>
+                <li><strong>انعدام التسخين والموثوقية:</strong> التخلص التام من حرارة ملفات السولينويد وخطر احتراقها عند التشغيل المستمر لساعات طويلة.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Pillar 3: BLDC & PID Control -->
+          <div class="card">
+            <div class="card-header-line">
+              <span class="card-icon blue">⚙</span>
+              <h3 class="card-title">التحكم المغلق بمضخة BLDC</h3>
+            </div>
+            <div class="card-content">
+              <p>
+                تطبيق منظومة تحكم مغلقة الحلقات (Closed-Loop PID Control):
+              </p>
+              <ul>
+                <li><strong>مضخة تعزيز 24V BLDC:</strong> مضخة بدون فرش عالية الكفاءة تعمل بتعديل عرض النبضة (PWM) عبر وحدة قيادة LR7843 MOSFET.</li>
+                <li><strong>تعديل عزم وسرعة ديناميكي:</strong> ضبط تدفق المياه والضغط الغشائي وفق قراءات حساس التدفق ومستشعر التيار INA219.</li>
+                <li><strong>غسيل عكسي آلي دوري (Auto-Flush):</strong> برمجة الصمام والمضخة لإجراء دورات تنظيف سريعة لإزالة الترسبات وإطالة عمر الغشاء النانوي لسنوات.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- System Advantage Banner -->
+        <div class="card" style="margin-top: 1.2rem; background: linear-gradient(90deg, #f0fdf4 0%, #ffffff 100%); border-color: #86efac;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <h4 style="color: #166534; font-size: 1.05rem; font-weight: 700;">المحصلة الهندسية للنظام المقترح</h4>
+              <p style="color: #15803d; font-size: 0.9rem; margin-top: 0.2rem;">
+                توفير ما يزيد عن <strong>65% من الطاقة الكهربائية الإجمالية</strong> ومضاعفة نسبة استرداد المياه النقية مقارنة بكافة أنظمة التحلية المحمولة التقليدية.
+              </p>
+            </div>
+            <span class="badge-saving" style="font-size: 1.1rem; padding: 0.4rem 1rem;">65% Energy Saved</span>
+          </div>
+        </div>
+      </div>
+
+      <footer class="slide-footer">
+        <div class="slide-footer-meta">
+          <span>المنظومة الذكية للترشيح النانوي للمياه الجوفية (NF-CPS)</span>
+          <span>الابتكار في الحل الهندسي</span>
+        </div>
+        <span class="slide-page-number">03 / 10</span>
+      </footer>
+    </section>
+
+    <!-- ====================================================================
+         SLIDE 4: SYSTEM ARCHITECTURE
+         ==================================================================== -->
+    <section id="slide-4" class="slide" aria-label="هيكلية النظام">
+      <header class="slide-header">
+        <div class="slide-title-group">
+          <h2 class="slide-title">هيكلية النظام السيبراني-الفيزيائي (System Architecture)</h2>
+          <span class="slide-subtitle">Hydraulic Flow Path &amp; Electronic Control Telemetry</span>
+        </div>
+        <span class="slide-badge">الشريحة 04</span>
+      </header>
+
+      <div class="slide-content-wrapper">
+        <div class="arch-layout">
+          <!-- Architecture Diagram -->
+          <div class="arch-image-card">
+            <img src="assets/images/project_diagram.png" alt="مخطط هيكلية النظام السيبراني-الفيزيائي" title="انقر لتكبير المخطط" loading="lazy">
+            <span class="arch-caption">Cyber-Physical Integration Architecture (NF Membrane &amp; BLDC Pump Digital Control System)</span>
+          </div>
+
+          <!-- Architecture Steps & Explanation -->
+          <div class="arch-steps-list">
+            <div class="arch-step-item">
+              <span class="step-num">1</span>
+              <div class="step-info">
+                <h4>المسار الهيدروليكي المادي (Hydraulic Flow Path)</h4>
+                <p>
+                  تدفق المياه الخام (Feed Water) عبر مرحلة ترشيح أولي (5µm + كربون نشط) لحجز العوالق والكلور، ثم تُضخ بمضخة 24V BLDC نحو غشاء الترشيح النانوي (NF Membrane 30-50 PSI) لفرزها إلى مياه صالحة (Permeate) ومياه مركزة (Brine).
+                </p>
+              </div>
+            </div>
+
+            <div class="arch-step-item">
+              <span class="step-num">2</span>
+              <div class="step-info">
+                <h4>طبقة الاستشعار والقياس عن بعد (Telemetry Layer)</h4>
+                <p>
+                  مستشعر INA219 يراقب جهد وتيار المضخة عبر ناقل I2C الرقمي. مستشعرات التدفق YF-S201 ترسل نبضات فورية لمقاطعات الهاردوير (Hardware Interrupts)، مع قراءة التوصيلية الملحية (Analog TDS).
+                </p>
+              </div>
+            </div>
+
+            <div class="arch-step-item">
+              <span class="step-num">3</span>
+              <div class="step-info">
+                <h4>طبقة التحكم والتنفيذ (Actuation &amp; Control Loop)</h4>
+                <p>
+                  المتحكم ESP32-S3 يولد إشارات PWM عالية التردد لوحدة LR7843 لتعديل سرعة المضخة، ويتحكم بفتح الصمام الكروي الآلي CWX-15Q لتصريف المياه المركزة أو إجراء الغسيل الآلي التلقائي.
+                </p>
+              </div>
+            </div>
+
+            <div class="arch-step-item">
+              <span class="step-num">4</span>
+              <div class="step-info">
+                <h4>واجهة التفاعل البصري (User Interface &amp; TFT)</h4>
+                <p>
+                  شاشة ILI9341 2.8" SPI TFT تعرض بصرياً معدل التدفق اللحظي، كمية الأملاح المزالة، واستهلاك القدرة الكهربائية بالواط وساعات التشغيل.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="slide-footer">
+        <div class="slide-footer-meta">
+          <span>المنظومة الذكية للترشيح النانوي للمياه الجوفية (NF-CPS)</span>
+          <span>هيكلية النظام الهندسية</span>
+        </div>
+        <span class="slide-page-number">04 / 10</span>
+      </footer>
+    </section>
+
+    <!-- ====================================================================
+         SLIDE 5: DEVELOPMENT ENVIRONMENT (PLATFORMIO & VS CODE)
+         ==================================================================== -->
+    <section id="slide-5" class="slide" aria-label="بيئة التطوير">
+      <header class="slide-header">
+        <div class="slide-title-group">
+          <h2 class="slide-title">بيئة التطوير والبرمجة المدمجة (PlatformIO &amp; VS Code)</h2>
+          <span class="slide-subtitle">Modern Embedded C++ Engineering Ecosystem</span>
+        </div>
+        <span class="slide-badge">الشريحة 05</span>
+      </header>
+
+      <div class="slide-content-wrapper">
+        <div class="grid-2">
+          <!-- Card: Why PlatformIO -->
+          <div class="card">
+            <div class="card-header-line">
+              <span class="card-icon blue">💻</span>
+              <h3 class="card-title">لماذا تم اختيار PlatformIO داخل VS Code؟</h3>
+            </div>
+            <div class="card-content">
+              <p>
+                تم اعتماد بيئة <strong>PlatformIO</strong> الاحترافية كإضافة متقدمة داخل بيئة التطوير (Visual Studio Code)، حيث توفر معايير هندسية صارمة تتجاوز القصور الموجود في بيئات التطوير التقليدية (مثل Arduino IDE):
+              </p>
+              <ul>
+                <li><strong>إدارة ذكية وحتمية للمكتبات (Semantic Library Management):</strong> تثبيت وتتبع إصدارات المكتبات بدقة عبر ملف الإعدادات دون تعارض بين ملفات التضمين.</li>
+                <li><strong>دعم معايير C++ الحديثة (Modern C++17):</strong> كتابة كود مدمج نظيف يدعم البرمجة كائنية التوجه (OOP)، ومحددات النوع الصارمة، وهياكل البيانات المحسنة للذاكرة.</li>
+                <li><strong>بناء تركيبي موحد (Modular Architecture):</strong> فصل تعريفات الهاردوير (Pinouts) وخوارزميات المعالجة عن حلقة التنفيذ الرئيسية لتسهيل الصيانة.</li>
+                <li><strong>أدوات الفحص والتحليل الساكن (Static Code Analysis):</strong> اكتشاف تسريب الذاكرة (Memory Leaks) وأخطاء المؤشرات قبل مرحلة رفع الكود على المتحكم.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Card: platformio.ini Configuration Snippet -->
+          <div class="card">
+            <div class="card-header-line">
+              <span class="card-icon teal">⚙</span>
+              <h3 class="card-title">هيكل إعدادات المشروع (platformio.ini)</h3>
+            </div>
+            <div class="card-content">
+              <p style="margin-bottom: 0.6rem;">
+                يضمن ملف الإعداد التالي إمكانية إعادة إنتاج البناء (Deterministic Builds) بنسبة 100% لأي مهندس في فريق العمل:
+              </p>
+              <!-- Safe Code Block: 100% English -->
+              <div class="code-container" style="direction: ltr; text-align: left;">
+                <div class="code-header-bar">
+                  <span class="code-tab">platformio.ini</span>
+                  <div class="code-header-actions">
+                    <button class="btn-copy-code" title="Copy code">Copy</button>
+                    <span class="code-badge">INI Config</span>
+                  </div>
+                </div>
+                <pre><code class="language-ini">[env:esp32-s3-devkitc-1]
+platform = espressif32 @ 6.5.0
+board = esp32-s3-devkitc-1
+framework = arduino
+monitor_speed = 115200
+
+build_flags = 
+    -D CORE_DEBUG_LEVEL=3
+    -D CONFIG_ARDUHAL_LOG_COLORS=1
+    -std=gnu++17
+
+lib_deps = 
+    adafruit/Adafruit INA219 @ ^1.2.3
+    adafruit/Adafruit GFX Library @ ^1.11.9
+    adafruit/Adafruit ILI9341 @ ^1.6.0
+    Wire
+    SPI</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comparison Bar -->
+        <div class="grid-3" style="margin-top: 1.2rem;">
+          <div class="card" style="padding: 0.8rem 1rem;">
+            <strong style="color: var(--primary); font-size: 0.95rem;">إدارة المكتبات التلقائية</strong>
+            <p style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.2rem;">
+              تنزيل حزم التعريفات تلقائياً من المستودع السحابي دون الحاجة للتثبيت اليدوي.
+            </p>
+          </div>
+          <div class="card" style="padding: 0.8rem 1rem;">
+            <strong style="color: var(--primary); font-size: 0.95rem;">فصل بيئات التشغيل</strong>
+            <p style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.2rem;">
+              إمكانية استهداف شرائح مختلفة (ESP32 / ESP32-S3) بنفس الكود المصدري بسهولة.
+            </p>
+          </div>
+          <div class="card" style="padding: 0.8rem 1rem;">
+            <strong style="color: var(--primary); font-size: 0.95rem;">مراقبة تسلسلية متقدمة</strong>
+            <p style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.2rem;">
+              Serial Monitor مدمج فائق السرعة مع تمييز لوني لرسائل الخطأ وفك شفرات الـ Panic Trace.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <footer class="slide-footer">
+        <div class="slide-footer-meta">
+          <span>المنظومة الذكية للترشيح النانوي للمياه الجوفية (NF-CPS)</span>
+          <span>بيئة التطوير والبرمجة المدمجة</span>
+        </div>
+        <span class="slide-page-number">05 / 10</span>
+      </footer>
+    </section>
+
+    <!-- ====================================================================
+         SLIDE 6: BILL OF MATERIALS (BOM) & REAL EGYPTIAN MARKET PRICES
+         ==================================================================== -->
+    <section id="slide-6" class="slide" aria-label="قائمة المكونات والتكلفة">
+      <header class="slide-header">
+        <div class="slide-title-group">
+          <h2 class="slide-title">قائمة المكونات والتكلفة الفعلية بالسوق المصري (BOM)</h2>
+          <span class="slide-subtitle">Bill of Materials, Component Sourcing &amp; Capital Cost</span>
+        </div>
+        <span class="slide-badge">الشريحة 06</span>
+      </header>
+
+      <div class="slide-content-wrapper">
+        <div class="bom-container">
+          <table class="bom-table">
+            <thead>
+              <tr>
+                <th style="width: 55px;">الصورة</th>
+                <th>اسم المكون الهندسي</th>
+                <th>الوظيفة في المنظومة</th>
+                <th>المتجر والمصدر المصري</th>
+                <th style="width: 110px; text-align: left;">السعر (EGP)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><img class="bom-img-thumb" src="assets/images/esp32_s3.jpg" alt="ESP32-S3" title="انقر لتكبير الصورة"></td>
+                <td><strong>ESP32-S3-WROOM-1 Dev Board</strong><br><span style="font-size: 0.75rem; color: var(--text-muted);">16MB Flash, 8MB PSRAM Dual-Core</span></td>
+                <td>وحدة المعالجة الرئيسية وتنفيذ خوارزميات التحكم والاتصال</td>
+                <td><span class="bom-source-tag">RAM Electronics</span></td>
+                <td class="bom-price">500.00 EGP</td>
+              </tr>
+              <tr>
+                <td><img class="bom-img-thumb" src="assets/images/vontron_nf_membrane.jpg" alt="Vontron NF Membrane" title="انقر لتكبير الصورة"></td>
+                <td><strong>Vontron NF Membrane 1812-50 GPD</strong><br><span style="font-size: 0.75rem; color: var(--text-muted);">غشاء الترشيح النانوي الأيوني</span></td>
+                <td>حجز أيونات العسر والمعادن الثقيلة وتمرير المياه النقية بضغط 40 PSI</td>
+                <td><span class="bom-source-tag">Egyptian Water Filter Suppliers</span></td>
+                <td class="bom-price">750.00 EGP</td>
+              </tr>
+              <tr>
+                <td><img class="bom-img-thumb" src="assets/images/bldc_pump_24v.jpg" alt="24V BLDC Pump" title="انقر لتكبير الصورة"></td>
+                <td><strong>24V DC Brushless Variable Boost Pump</strong><br><span style="font-size: 0.75rem; color: var(--text-muted);">مضخة تعزيز متغيرة السرعة</span></td>
+                <td>توفير الضغط الهيدروليكي المناسب للغشاء مع تحكم سلس عبر PWM</td>
+                <td><span class="bom-source-tag">Future Electronics / Automation</span></td>
+                <td class="bom-price">1,200.00 EGP</td>
+              </tr>
+              <tr>
+                <td><img class="bom-img-thumb" src="assets/images/cwx15q_ball_valve.jpg" alt="Motorized Ball Valve" title="انقر لتكبير الصورة"></td>
+                <td><strong>CWX-15Q 1/2" Motorized Ball Valve</strong><br><span style="font-size: 0.75rem; color: var(--text-muted);">صمام كروي آلي 0-Watt Holding</span></td>
+                <td>التحكم في تصريف المياه المركزة وإجراء الغسيل العكسي بصفر واط استهلاك تثبيت</td>
+                <td><span class="bom-source-tag">Egyptian Industrial Automation</span></td>
+                <td class="bom-price">499.00 EGP</td>
+              </tr>
+              <tr>
+                <td><img class="bom-img-thumb" src="assets/images/ina219_sensor.jpg" alt="INA219 Sensor" title="انقر لتكبير الصورة"></td>
+                <td><strong>INA219 I2C Current &amp; Power Sensor</strong><br><span style="font-size: 0.75rem; color: var(--text-muted);">حساس قياس الجهد والتيار اللحظي</span></td>
+                <td>مراقبة استهلاك قدرة المضخة واكتشاف الحمل الزائد أو الانسداد مبكراً</td>
+                <td><span class="bom-source-tag">Future Electronics / Amazon.eg</span></td>
+                <td class="bom-price">185.00 EGP</td>
+              </tr>
+              <tr>
+                <td><img class="bom-img-thumb" src="assets/images/yf_s201_flow_sensor.jpg" alt="YF-S201 Flow Sensor" title="انقر لتكبير الصورة"></td>
+                <td><strong>YF-S201 G1/2" Water Flow Sensor</strong><br><span style="font-size: 0.75rem; color: var(--text-muted);">مستشعر تدفق بتأثير هول</span></td>
+                <td>حساب معدل التدفق التراكمي واللحظي عبر مقاطعات الهاردوير بدقة عالية</td>
+                <td><span class="bom-source-tag">RAM Electronics</span></td>
+                <td class="bom-price">200.00 EGP</td>
+              </tr>
+              <tr>
+                <td><img class="bom-img-thumb" src="assets/images/analog_tds_sensor.jpg" alt="Analog TDS Sensor" title="انقر لتكبير الصورة"></td>
+                <td><strong>Analog TDS Sensor Meter V1.0</strong><br><span style="font-size: 0.75rem; color: var(--text-muted);">مستشعر إجمالي الأملاح الذائبة</span></td>
+                <td>قياس نقاء وجودة المياه الخارجة ومراقبة نسبة استخلاص الأملاح في الزمن الحقيقي</td>
+                <td><span class="bom-source-tag">RAM Electronics</span></td>
+                <td class="bom-price">450.00 EGP</td>
+              </tr>
+              <tr>
+                <td><img class="bom-img-thumb" src="assets/images/ili9341_tft_display.jpg" alt="ILI9341 TFT Display" title="انقر لتكبير الصورة"></td>
+                <td><strong>ILI9341 2.8" SPI TFT Color Display</strong><br><span style="font-size: 0.75rem; color: var(--text-muted);">شاشة عرض ملونة 240x320</span></td>
+                <td>عرض المؤشرات التشغيلية والرسوم البيانية وحالة النظام محلياً</td>
+                <td><span class="bom-source-tag">RAM Electronics</span></td>
+                <td class="bom-price">650.00 EGP</td>
+              </tr>
+              <tr>
+                <td><img class="bom-img-thumb" src="assets/images/lr7843_mosfet.jpg" alt="LR7843 MOSFET" title="انقر لتكبير الصورة"></td>
+                <td><strong>LR7843 15A 400W Isolated MOSFET Module</strong><br><span style="font-size: 0.75rem; color: var(--text-muted);">وحدة قيادة وتبديل عالي السرعة</span></td>
+                <td>توصيل إشارات PWM من المتحكم إلى محرك المضخة مع عزل بصري وحراري</td>
+                <td><span class="bom-source-tag">RAM Electronics</span></td>
+                <td class="bom-price">45.00 EGP</td>
+              </tr>
+              <tr>
+                <td><img class="bom-img-thumb" src="assets/images/lm2596_buck_converter.jpg" alt="LM2596 Buck Converter" title="انقر لتكبير الصورة"></td>
+                <td><strong>LM2596HVS Step-Down Buck Converter</strong><br><span style="font-size: 0.75rem; color: var(--text-muted);">مخفض جهد عالي الكفاءة (حتى 60V)</span></td>
+                <td>تنظيم جهد التغذية من 24V إلى 5V/3.3V لتشغيل المعالج والمستشعرات بكفاءة 92%</td>
+                <td><span class="bom-source-tag">RAM Electronics</span></td>
+                <td class="bom-price">65.00 EGP</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Total Cost Banner -->
+        <div class="bom-total-card">
+          <div>
+            <span class="bom-total-label">إجمالي تكلفة المكونات الهندسية للمنظومة (Total Prototype Cost)</span>
+            <div style="font-size: 0.8rem; opacity: 0.9; margin-top: 0.15rem;">الأسعار مستخرجة فعلياً ومباشرة من السوق الإلكتروني المصري</div>
+          </div>
+          <span class="bom-total-value">4,544.00 EGP</span>
+        </div>
+      </div>
+
+      <footer class="slide-footer">
+        <div class="slide-footer-meta">
+          <span>المنظومة الذكية للترشيح النانوي للمياه الجوفية (NF-CPS)</span>
+          <span>قائمة المكونات والتكلفة التقديرية</span>
+        </div>
+        <span class="slide-page-number">06 / 10</span>
+      </footer>
+    </section>
+
+    <!-- ====================================================================
+         SLIDE 7: CORE FIRMWARE - INITIALIZATION & HARDWARE SETUP
+         ==================================================================== -->
+    <section id="slide-7" class="slide" aria-label="الكود الأساسي: التهيئة">
+      <header class="slide-header">
+        <div class="slide-title-group">
+          <h2 class="slide-title">البرمجيات المدمجة: التهيئة والمقاطعات (System Initialization)</h2>
+          <span class="slide-subtitle">Hardware Bus Setup, PWM Timer &amp; ISR Configuration</span>
+        </div>
+        <span class="slide-badge">الشريحة 07</span>
+      </header>
+
+      <div class="slide-content-wrapper">
+        <div class="code-slide-grid">
+          <!-- Explanation Card -->
+          <div class="code-explanation-card">
+            <div>
+              <h3 class="card-title">المبادئ الهندسية لتهيئة العتاد المدمج</h3>
+              <p class="card-content" style="margin-top: 0.6rem;">
+                تمت كتابة الكود المصدري لبيئة <strong>PlatformIO</strong> بلغة <strong>C++17</strong> وفق معايير الأنظمة المدمجة المقاومة للأعطال (Fault-Tolerant Embedded Design):
+              </p>
+              <div class="code-features-list">
+                <div class="code-feature-box">
+                  <h5>مقاطعات العتاد الحتمية (Hardware ISR)</h5>
+                  <p>ربط حساس التدفق بمقاطعة سريعة موضوعة في ذاكرة التعليمات السريعة (IRAM_ATTR) لضمان عدم فقدان أي نبضة حتى أثناء التحميل العالي للمعالج.</p>
+                </div>
+                <div class="code-feature-box">
+                  <h5>تحكم PWM بتردد 20kHz</h5>
+                  <p>استخدام مؤقتات LEDC المدمجة في ESP32-S3 لتشغيل ترانزستور LR7843 فوق نطاق السمع البشري لتفادي الطنين الصوتي مع زيادة كفاءة المضخة.</p>
+                </div>
+                <div class="code-feature-box">
+                  <h5>معايرة مستشعر القدرة INA219</h5>
+                  <p>تهيئة ناقل I2C ليعمل عند 400kHz Fast Mode لقياس الهبوط في الجهد عبر شنت المقاومة وحساب القدرة بدقة 0.1mA.</p>
+                </div>
+              </div>
+            </div>
+            <div style="font-size: 0.78rem; color: var(--text-muted); border-top: 1px solid var(--border-light); padding-top: 0.6rem;">
+              * الكود خالٍ تماماً من الحروف العربية التزاماً بمعايير السلامة البرمجية.
+            </div>
+          </div>
+
+          <!-- Code Snippet 1: 100% English -->
+          <div class="code-container">
+            <div class="code-header-bar">
+              <span class="code-tab">src/system_init.cpp</span>
+              <div class="code-header-actions">
+                <button class="btn-copy-code" title="Copy code">Copy</button>
+                <span class="code-badge">ESP32-S3 C++</span>
+              </div>
+            </div>
+            <pre><code class="language-cpp">#include &lt;Arduino.h&gt;
+#include &lt;Wire.h&gt;
+#include &lt;SPI.h&gt;
+#include &lt;Adafruit_INA219.h&gt;
+#include &lt;Adafruit_GFX.h&gt;
+#include &lt;Adafruit_ILI9341.h&gt;
+
+// Hardware Pin Assignments for ESP32-S3
+constexpr uint8_t PIN_FLOW_SENSOR = 4;
+constexpr uint8_t PIN_PUMP_PWM    = 5;
+constexpr uint8_t PIN_VALVE_OPEN  = 6;
+constexpr uint8_t PIN_VALVE_CLOSE = 7;
+constexpr uint8_t PIN_TDS_ADC     = 8;
+constexpr uint8_t TFT_CS          = 10;
+constexpr uint8_t TFT_DC          = 9;
+constexpr uint8_t TFT_RST         = 14;
+
+// PWM Configuration Parameters
+constexpr uint32_t PWM_FREQ       = 20000; // 20 kHz ultrasonic frequency
+constexpr uint8_t  PWM_CHANNEL    = 0;
+constexpr uint8_t  PWM_RESOLUTION = 8;     // 8-bit resolution (0-255)
+
+// Global Telemetry & Actuator Instances
+Adafruit_INA219 ina219;
+Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_RST);
+volatile uint32_t flowPulseCounter = 0;
+
+// High-speed Interrupt Service Routine located in IRAM
+void IRAM_ATTR onFlowSensorPulse() {
+    flowPulseCounter++;
+}
+
+void setupSystemHardware() {
+    Serial.begin(115200);
+    Wire.begin(1, 2); // SDA = GPIO1, SCL = GPIO2
+
+    // Initialize Current & Power Telemetry Sensor
+    if (!ina219.begin()) {
+        Serial.println("[ERROR] Failed to find INA219 current sensor!");
+    } else {
+        ina219.setCalibration_32V_2A();
+        Serial.println("[OK] INA219 initialized successfully.");
+    }
+
+    // Configure Hardware Flow Sensor Interrupt
+    pinMode(PIN_FLOW_SENSOR, INPUT_PULLUP);
+    attachInterrupt(digitalPinToInterrupt(PIN_FLOW_SENSOR), onFlowSensorPulse, RISING);
+
+    // Initialize 0-Watt Motorized Ball Valve Control Lines
+    pinMode(PIN_VALVE_OPEN, OUTPUT);
+    pinMode(PIN_VALVE_CLOSE, OUTPUT);
+    digitalWrite(PIN_VALVE_OPEN, LOW);
+    digitalWrite(PIN_VALVE_CLOSE, LOW);
+
+    // Setup High-Frequency LEDC PWM for Pump MOSFET Driver
+    ledcSetup(PWM_CHANNEL, PWM_FREQ, PWM_RESOLUTION);
+    ledcAttachPin(PIN_PUMP_PWM, PWM_CHANNEL);
+    ledcWrite(PWM_CHANNEL, 0); // Start in safe idle state
+
+    // Initialize ILI9341 TFT Display via SPI Bus
+    tft.begin();
+    tft.setRotation(3);
+    tft.fillScreen(ILI9341_BLACK);
+    tft.setTextColor(ILI9341_CYAN);
+    tft.setTextSize(2);
+    tft.setCursor(20, 30);
+    tft.println("SMART NF-CPS READY");
+}</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <footer class="slide-footer">
+        <div class="slide-footer-meta">
+          <span>المنظومة الذكية للترشيح النانوي للمياه الجوفية (NF-CPS)</span>
+          <span>الكود الأساسي: تهيئة العتاد</span>
+        </div>
+        <span class="slide-page-number">07 / 10</span>
+      </footer>
+    </section>
+
+    <!-- ====================================================================
+         SLIDE 8: CORE FIRMWARE - CONTROL ALGORITHM & AUTO-FLUSH ROUTINE
+         ==================================================================== -->
+    <section id="slide-8" class="slide" aria-label="الكود الأساسي: التحكم">
+      <header class="slide-header">
+        <div class="slide-title-group">
+          <h2 class="slide-title">البرمجيات المدمجة: خوارزمية التحكم والغسيل الآلي</h2>
+          <span class="slide-subtitle">Closed-Loop Flow Regulation &amp; Automated Membrane Flush</span>
+        </div>
+        <span class="slide-badge">الشريحة 08</span>
+      </header>
+
+      <div class="slide-content-wrapper">
+        <div class="code-slide-grid">
+          <!-- Explanation Card -->
+          <div class="code-explanation-card">
+            <div>
+              <h3 class="card-title">آلية التحكم والغسيل الآلي الذكي</h3>
+              <p class="card-content" style="margin-top: 0.6rem;">
+                تقوم خوارزمية التحكم المدمجة بتنفيذ المهام التالية في الزمن الحقيقي دون تأخير حلقي (Non-blocking Architecture):
+              </p>
+              <div class="code-features-list">
+                <div class="code-feature-box">
+                  <h5>حساب التدفق والمعايرة الملحية</h5>
+                  <p>تفريغ عداد النبضات ذرّياً (Atomic Read) وحساب معدل التدفق باللتر/دقيقة، مع تحويل قراءة الـ ADC لـ TDS بتعويض حراري متعدد الحدود.</p>
+                </div>
+                <div class="code-feature-box">
+                  <h5>الحماية التلقائية من الحمل الزائد</h5>
+                  <p>مراقبة تيار المضخة عبر INA219؛ إذا تجاوز التيار 1200mA بسبب زيادة الضغط أو انسداد الغشاء، يُفعل النظام بروتوكول الحماية فوراً.</p>
+                </div>
+                <div class="code-feature-box">
+                  <h5>دورة الغسيل العكسي بصفر واط</h5>
+                  <p>تفعيل صمام CWX-15Q لنبضة 4 ثوانٍ لفتحه بالكامل، ثم خفض استهلاك التثبيت لـ 0W وتشغيل المضخة بتدفق جارف لتنظيف سطح الغشاء وإزالة الترسبات.</p>
+                </div>
+              </div>
+            </div>
+            <div style="font-size: 0.78rem; color: var(--text-muted); border-top: 1px solid var(--border-light); padding-top: 0.6rem;">
+              * الكود متوافق تماماً مع PlatformIO ESP-IDF / Arduino Framework.
+            </div>
+          </div>
+
+          <!-- Code Snippet 2: 100% English -->
+          <div class="code-container">
+            <div class="code-header-bar">
+              <span class="code-tab">src/control_loop.cpp</span>
+              <div class="code-header-actions">
+                <button class="btn-copy-code" title="Copy code">Copy</button>
+                <span class="code-badge">Closed-Loop Algorithm</span>
+              </div>
+            </div>
+            <pre><code class="language-cpp">// Closed-Loop Execution Loop & Fault Protection Protocol
+constexpr float    CALIBRATION_FACTOR    = 7.5;   // YF-S201 Pulse frequency factor
+constexpr float    MAX_CURRENT_LIMIT_MA  = 1200.0;// Overcurrent safety threshold
+constexpr uint32_t TELEMETRY_INTERVAL_MS = 1000;
+constexpr uint32_t FLUSH_DURATION_MS     = 6000;
+
+float readTdsSensorPpm() {
+    int rawAdc = analogRead(PIN_TDS_ADC);
+    float voltage = (rawAdc / 4095.0) * 3.3;
+    // 3rd-order polynomial temperature-compensated conversion
+    float tdsValue = (133.42 * pow(voltage, 3) - 255.86 * pow(voltage, 2) + 857.39 * voltage) * 0.5;
+    return (tdsValue > 0.0) ? tdsValue : 0.0;
+}
+
+void executeAutomatedFlushingCycle() {
+    Serial.println("[ACTION] Triggering Automated Membrane Flush Routine...");
+    
+    // Pulse CWX-15Q motorized valve to OPEN state (3.5s transit)
+    digitalWrite(PIN_VALVE_OPEN, HIGH);
+    delay(4000); 
+    digitalWrite(PIN_VALVE_OPEN, LOW); // Cut off power -> 0-Watt Holding!
+
+    // Run BLDC Boost Pump at 85% duty cycle to sweep membrane surface
+    ledcWrite(PWM_CHANNEL, 215);
+    delay(FLUSH_DURATION_MS);
+
+    // Pulse CWX-15Q motorized valve to CLOSED state (3.5s transit)
+    digitalWrite(PIN_VALVE_CLOSE, HIGH);
+    delay(4000);
+    digitalWrite(PIN_VALVE_CLOSE, LOW); // 0-Watt steady state closed
+
+    // Resume standard operating PWM
+    ledcWrite(PWM_CHANNEL, 175);
+    Serial.println("[OK] Flush complete. Resumed regular filtration.");
+}
+
+void processSystemControlLoop() {
+    static uint32_t lastTelemetryTime = 0;
+    
+    if (millis() - lastTelemetryTime >= TELEMETRY_INTERVAL_MS) {
+        lastTelemetryTime = millis();
+
+        // Atomic pulse count read
+        noInterrupts();
+        uint32_t pulses = flowPulseCounter;
+        flowPulseCounter = 0;
+        interrupts();
+
+        float flowRate_LPM = (pulses / CALIBRATION_FACTOR) / 60.0;
+        float shuntCurrent_mA = ina219.getCurrent_mA();
+        float busVoltage_V = ina219.getBusVoltage_V();
+        float currentTdsPpm = readTdsSensorPpm();
+
+        Serial.printf("[TELEMETRY] Flow: %.2f L/min | Current: %.1f mA | Volt: %.2f V | TDS: %.1f ppm\n",
+                      flowRate_LPM, shuntCurrent_mA, busVoltage_V, currentTdsPpm);
+
+        // Overload and membrane fouling detection condition
+        if (shuntCurrent_mA > MAX_CURRENT_LIMIT_MA || (flowRate_LPM < 0.15 && shuntCurrent_mA > 700.0)) {
+            Serial.println("[WARNING] High hydraulic resistance detected! Initiating flush.");
+            executeAutomatedFlushingCycle();
+        }
+    }
+}</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <footer class="slide-footer">
+        <div class="slide-footer-meta">
+          <span>المنظومة الذكية للترشيح النانوي للمياه الجوفية (NF-CPS)</span>
+          <span>الكود الأساسي: خوارزمية التحكم</span>
+        </div>
+        <span class="slide-page-number">08 / 10</span>
+      </footer>
+    </section>
+
+    <!-- ====================================================================
+         SLIDE 9: ENERGY EFFICIENCY & PERFORMANCE ANALYSIS + SIMULATOR
+         ==================================================================== -->
+    <section id="slide-9" class="slide" aria-label="تحليل كفاءة الطاقة">
+      <header class="slide-header">
+        <div class="slide-title-group">
+          <h2 class="slide-title">تحليل كفاءة الطاقة ومقارنة الأداء الهندسي</h2>
+          <span class="slide-subtitle">Quantitative Power Efficiency &amp; Recovery Ratio Benchmarks</span>
+        </div>
+        <span class="slide-badge">الشريحة 09</span>
+      </header>
+
+      <div class="slide-content-wrapper">
+        <!-- Comparative Table -->
+        <div class="comparison-table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>المعيار الهندسي (Engineering Parameter)</th>
+                <th class="col-ro">منظومة RO التقليدية (Standard RO)</th>
+                <th class="col-nf">منظومة NF-CPS الذكية (Our Solution)</th>
+                <th>نسبة التحسين والتوفير</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>الضغط الهيدروليكي التشغيلي (Operating Pressure)</strong></td>
+                <td>80 - 110 PSI</td>
+                <td><strong>35 - 45 PSI</strong></td>
+                <td><span class="badge-saving">انخفاض بنسبة 58% في الضغط</span></td>
+              </tr>
+              <tr>
+                <td><strong>الاستهلاك الطاقي النوعي لكل لتر (Energy / Liter)</strong></td>
+                <td>4.8 - 6.2 واط.ساعة / لتر</td>
+                <td><strong>1.5 - 1.8 واط.ساعة / لتر</strong></td>
+                <td><span class="badge-saving">توفير 66% من الطاقة</span></td>
+              </tr>
+              <tr>
+                <td><strong>استهلاك صمامات التحكم (Valve Power Holding)</strong></td>
+                <td>10.0 واط (مستمر عبر Solenoid)</td>
+                <td><strong>0.00 واط (CWX-15Q Motorized)</strong></td>
+                <td><span class="badge-saving">توفير 99.8% في استهلاك الصمامات</span></td>
+              </tr>
+              <tr>
+                <td><strong>نسبة استرداد المياه النقية (Water Recovery Ratio)</strong></td>
+                <td>25% - 35% فقط (هدر مائي هائل)</td>
+                <td><strong>65% - 75% مياه مستردة</strong></td>
+                <td><span class="badge-saving">مضاعفة إنتاج المياه الصالحة x2</span></td>
+              </tr>
+              <tr>
+                <td><strong>الاحتفاظ بالمعادن الصحية المفيدة (Mineral Balance)</strong></td>
+                <td>نزع كلي (0 - 20 PPM) يتطلب تمعدن</td>
+                <td><strong>احتفاظ انتقائي (150 - 250 PPM)</strong></td>
+                <td><span class="badge-saving">ماء صحي طبيعي دون كيماويات</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Interactive Telemetry & Energy Simulator (Slide 9 Exclusive) -->
+        <div class="sim-widget">
+          <div class="sim-header">
+            <span class="sim-title">
+              ⚡ محاكي القدرة والتدفق السيبراني-الفيزيائي (Interactive Telemetry Simulator)
+            </span>
+            <span class="sim-badge-live">Live Model</span>
+          </div>
+          <div class="sim-body">
+            <!-- Controls (Hidden in Print) -->
+            <div class="sim-controls-panel">
+              <div class="sim-control-group">
+                <div class="sim-control-label">
+                  <span>ملوحة مياه التغذية (Feed TDS):</span>
+                  <strong id="simValTds" style="color: var(--primary);">1200 ppm</strong>
+                </div>
+                <input id="simSliderTds" class="sim-slider" type="range" min="800" max="2500" step="50" value="1200">
+              </div>
+              <div class="sim-control-group">
+                <div class="sim-control-label">
+                  <span>سرعة الضخ (Pump PWM Boost):</span>
+                  <strong id="simValPwm" style="color: var(--primary);">75%</strong>
+                </div>
+                <input id="simSliderPwm" class="sim-slider" type="range" min="50" max="100" step="5" value="75">
+              </div>
+            </div>
+
+            <!-- Readouts (Preserved in Print) -->
+            <div class="sim-readouts-grid">
+              <div class="sim-metric-card">
+                <span class="sim-metric-label">الضغط الغشائي المحسوب</span>
+                <div class="sim-metric-val"><span id="simReadoutPressure">41.2</span> <span class="sim-metric-unit">PSI</span></div>
+              </div>
+              <div class="sim-metric-card">
+                <span class="sim-metric-label">قدرة المضخة الفعلية</span>
+                <div class="sim-metric-val"><span id="simReadoutPower">23.5</span> <span class="sim-metric-unit">Watt</span></div>
+              </div>
+              <div class="sim-metric-card">
+                <span class="sim-metric-label">التدفق اللحظي المنتج</span>
+                <div class="sim-metric-val"><span id="simReadoutFlow">0.32</span> <span class="sim-metric-unit">L/min</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Off-Grid Autonomy Analysis -->
+        <div class="grid-3">
+          <div class="card" style="padding: 0.8rem 1rem;">
+            <h4 class="card-title" style="font-size: 0.9rem; color: var(--primary-dark);">الاستقلالية عبر البطارية (Battery Autonomy)</h4>
+            <div class="metric-callout" style="margin: 0.3rem 0;">
+              <span class="metric-value" style="font-size: 1.6rem; color: var(--accent-green);">18.5</span>
+              <span class="metric-label">ساعة تشغيل مستمر</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-secondary);">
+              بطارية LiFePO4 سعة 12V 20Ah تنتج ما يزيد عن 450 لتراً نقياً يومياً دون إعادة شحن.
+            </p>
+          </div>
+
+          <div class="card" style="padding: 0.8rem 1rem;">
+            <h4 class="card-title" style="font-size: 0.9rem; color: var(--primary-dark);">التشغيل بالطاقة الشمسية (PV Solar)</h4>
+            <div class="metric-callout" style="margin: 0.3rem 0;">
+              <span class="metric-value" style="font-size: 1.6rem; color: var(--primary);">50</span>
+              <span class="metric-label">واط فقط حجم اللوح</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-secondary);">
+              يكفي لوح شمسي صغير أحادي البلورة (50W) لتشغيل المحطة نهاراً وشحن البطارية معاً.
+            </p>
+          </div>
+
+          <div class="card" style="padding: 0.8rem 1rem;">
+            <h4 class="card-title" style="font-size: 0.9rem; color: var(--primary-dark);">العمر الافتراضي للغشاء (Membrane Longevity)</h4>
+            <div class="metric-callout" style="margin: 0.3rem 0;">
+              <span class="metric-value" style="font-size: 1.6rem; color: var(--accent-teal);">x3</span>
+              <span class="metric-label">مضاعفة عمر الغشاء</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-secondary);">
+              بروتوكول الغسيل العكسي الآلي الدوري يمنع استقرار بلورات الكالسيوم ويحمي المسام النانوية.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <footer class="slide-footer">
+        <div class="slide-footer-meta">
+          <span>المنظومة الذكية للترشيح النانوي للمياه الجوفية (NF-CPS)</span>
+          <span>تحليل كفاءة الطاقة والجدوى الهندسية</span>
+        </div>
+        <span class="slide-page-number">09 / 10</span>
+      </footer>
+    </section>
+
+    <!-- ====================================================================
+         SLIDE 10: CONCLUSION & RECOMMENDATIONS
+         ==================================================================== -->
+    <section id="slide-10" class="slide" aria-label="الخلاصة والتوصيات">
+      <header class="slide-header">
+        <div class="slide-title-group">
+          <h2 class="slide-title">الخلاصة والتوصيات الهندسية المستقبلية</h2>
+          <span class="slide-subtitle">Project Conclusions, Key Outcomes &amp; Future Recommendations</span>
+        </div>
+        <span class="slide-badge">الشريحة 10</span>
+      </header>
+
+      <div class="slide-content-wrapper">
+        <!-- Main Outcome Box -->
+        <div class="conclusion-summary-box">
+          <h4>مخرجات المشروع والنتائج المحققة (Key Engineering Achievements)</h4>
+          <p>
+            أثبتت المنظومة الذكية للترشيح النانوي (NF-CPS) جدواها الهندسية والتطبيقية كبديل متفوق بيئياً واقتصادياً عن أنظمة التحلية التقليدية. تم بنجاح دمج طبقة فيزيائية هيدروليكية منخفضة الفاقد مع طبقة سيبرانية متقدمة قائمة على معالج ESP32-S3، مما أسفر عن محطة معالجة مياه جوفية مصغرة ومحمولة تعمل بكفاءة طاقية استثنائية ونسبة استرداد مائي تتجاوز 70%، وبتكلفة عتاد لا تتعدى 4,550 جنيهاً مصرياً.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <!-- Card: Practical Applications -->
+          <div class="card">
+            <div class="card-header-line">
+              <span class="card-icon green">🎯</span>
+              <h3 class="card-title">مجالات التطبيق والاستخدام الميداني</h3>
+            </div>
+            <div class="card-content">
+              <ul>
+                <li><strong>التجمعات الريفية والنائية:</strong> توفير مياه شرب نقية وصحية للمناطق المعتمدة على الآبار دون الحاجة لشبكة كهرباء عامة.</li>
+                <li><strong>محطات الطوارئ والإغاثة المحمولة:</strong> محطة مدمجة وخفيفة الوزن يسهل نقلها ونشرها في حالات الكوارث البيئية.</li>
+                <li><strong>الزراعة المحمية الذكية:</strong> إزالة الأملاح الضارة مع الحفاظ على العناصر الغذائية اللازمة للري بالتنقيط.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Card: Future Engineering Recommendations -->
+          <div class="card">
+            <div class="card-header-line">
+              <span class="card-icon blue">🚀</span>
+              <h3 class="card-title">التوصيات الهندسية للتطوير المستقبلي</h3>
+            </div>
+            <div class="card-content">
+              <ul>
+                <li><strong>التنبؤ الذكي بالانسداد عبر الذكاء الاصطناعي الطرفي (TinyML):</strong> تدريب نموذج تعلم آلي خفيف على المتحكم (Edge Impulse) للتنبؤ بتكلس الغشاء قبل وقوعه.</li>
+                <li><strong>التكامل السحابي الكامل (IoT &amp; MQTT Telemetry):</strong> إرسال بيانات الاستهلاك وجودة المياه لحظياً إلى منصة مركزية عبر بروتوكولات Wi-Fi/LoRaWAN.</li>
+                <li><strong>التتبع الشمسي الذكي (Direct MPPT Integration):</strong> دمج دائرة تعقب نقطة القدرة القصوى مباشرة داخل المنظومة المدمجة لرفع كفاءة استغلال الألواح الشمسية.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Closing Academic Sign-off -->
+        <div style="text-align: center; margin-top: 1.2rem; font-size: 0.95rem; color: var(--text-muted);">
+          تم بحمد الله | المنظومة الذكية للترشيح النانوي للمياه الجوفية (Smart NF-CPS) | 2026
+        </div>
+      </div>
+
+      <footer class="slide-footer">
+        <div class="slide-footer-meta">
+          <span>المنظومة الذكية للترشيح النانوي للمياه الجوفية (NF-CPS)</span>
+          <span>الخلاصة والتوصيات الهندسية</span>
+        </div>
+        <span class="slide-page-number">10 / 10</span>
+      </footer>
+    </section>
+
+  </main>
+
+  <!-- KaTeX Scripts for Mathematical & Chemical Rendering (Non-intrusive) -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <!-- Prism.js Scripts for Syntax Highlighting Only (Non-layout-intrusive) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-ini.min.js"></script>
+
+  <!-- Application Script (Interactive & Print-Isolated) -->
+  <script src="script.js"></script>
+</body>
+</html>

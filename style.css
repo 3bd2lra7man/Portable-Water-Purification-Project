@@ -54,7 +54,7 @@
 }
 
 html {
-  font-size: 16px;
+  font-size: 17.5px; /* Scaled up for superior presentation readability */
   scroll-behavior: smooth;
   height: 100%;
 }
@@ -251,8 +251,68 @@ body {
   font-size: 1.15rem;
   color: var(--text-secondary);
   max-width: 780px;
-  margin: 0 auto 2.2rem auto;
+  margin: 0 auto 1.8rem auto;
   line-height: 1.7;
+}
+
+/* Student Author Profile Card */
+.cover-student-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+  background: var(--bg-surface);
+  border: 2px solid #0284c7;
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1.8rem;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.12);
+  margin-bottom: 1.8rem;
+  text-align: right;
+  direction: rtl;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cover-student-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.2);
+}
+
+.student-avatar-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(3, 105, 161, 0.25);
+}
+
+.student-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.student-badge-role {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+.student-name {
+  font-size: 1.38rem;
+  font-weight: 900;
+  color: var(--primary-dark);
+  line-height: 1.2;
+}
+
+.student-grade {
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: #0284c7;
 }
 
 .cover-tech-pills {
@@ -506,17 +566,34 @@ body {
   align-items: center;
 }
 
-.arch-image-card img {
-  max-width: 100%;
-  max-height: 380px;
-  object-fit: contain;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: transform 0.2s ease;
+.arch-diagram-hero {
+  width: 100%;
+  background: #ffffff;
+  border: 1.5px solid var(--border-medium);
+  border-radius: var(--radius-md);
+  padding: 1.2rem;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
+.arch-diagram-hero img,
+.arch-diagram-img-large,
+.arch-image-card img {
+  max-width: 100%;
+  max-height: 480px; /* Doubled visual size on screen */
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  cursor: zoom-in;
+  transition: transform 0.25s ease;
+}
+
+.arch-diagram-hero img:hover,
 .arch-image-card img:hover {
-  transform: scale(1.02);
+  transform: scale(1.03);
 }
 
 .arch-caption {
@@ -613,7 +690,9 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  width: 110px;
+  height: 105px;
 }
 
 .bom-card-img {
@@ -626,6 +705,13 @@ body {
 
 .bom-card:hover .bom-card-img {
   transform: scale(1.15);
+}
+
+.bom-showcase-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
 }
 
 .bom-card-info {
@@ -926,6 +1012,85 @@ body {
   font-family: var(--font-code) !important;
   font-size: 0.85rem !important;
   line-height: 1.5 !important;
+}
+
+/* VS Code Dark / Prism Tomorrow Theme Syntax Highlighting (Screen & Print Safe) */
+.code-container pre code,
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #d4d4d4 !important;
+  font-family: var(--font-code) !important;
+  direction: ltr !important;
+  text-align: left !important;
+  white-space: pre !important;
+  word-spacing: normal !important;
+  word-break: normal !important;
+  tab-size: 4 !important;
+  hyphens: none !important;
+}
+
+.token.comment,
+.token.block-comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6a9955 !important;
+  font-style: italic !important;
+}
+
+.token.punctuation {
+  color: #d4d4d4 !important;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.function-name,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #b5cea8 !important;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #ce9178 !important;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.token.variable {
+  color: #d4d4d4 !important;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword,
+.token.class-name {
+  color: #569cd6 !important;
+  font-weight: 600 !important;
+}
+
+.token.function {
+  color: #dcdcaa !important;
+}
+
+.token.macro,
+.token.directive,
+.token.macro-name {
+  color: #c586c0 !important;
+  font-weight: 600 !important;
+}
+
+.token.regex,
+.token.important {
+  color: #d16969 !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -1340,7 +1505,7 @@ body {
     overflow-y: visible !important;
     margin: 0 !important;
     padding: 0 !important;
-    font-size: 14.2px !important; /* Large, bold presentation font */
+    font-size: 15.5px !important; /* Crisp, enlarged academic presentation font */
   }
 
   .presentation-container {
@@ -1357,30 +1522,28 @@ body {
     padding: 0 !important;
   }
 
-  /* 4. Strict One-Page-Per-Slide Architecture */
+  /* 4. Multi-Page Optimized Slide Architecture for Superior Print Output */
   .slide {
     display: block !important;
     position: relative !important;
     float: none !important;
     clear: both !important;
     width: 297mm !important;
-    height: 210mm !important;
-    max-height: 210mm !important;
     min-height: 210mm !important;
+    height: auto !important;
+    max-height: none !important;
     box-sizing: border-box !important;
-    padding: 7mm 12mm 5mm 12mm !important;
+    padding: 8mm 14mm 6mm 14mm !important;
     margin: 0 !important;
     border: none !important;
     border-bottom: none !important;
-    overflow: hidden !important; /* Strictly prevents accidental 2nd page spill */
+    overflow: visible !important;
     
-    /* Triple-enforced Page Breaks */
+    /* Enforced Page Breaks */
     page-break-before: always !important;
     break-before: page !important;
     page-break-after: always !important;
     break-after: page !important;
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
   }
 
   /* First slide must not force a blank page before it */
@@ -1398,7 +1561,8 @@ body {
   }
 
   .slide-content-wrapper {
-    height: calc(100% - 45px) !important;
+    min-height: calc(210mm - 40mm) !important;
+    height: auto !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
@@ -1415,38 +1579,42 @@ body {
 
   /* Slide Headers & Footers */
   .slide-header {
-    margin-bottom: 0.45rem !important;
+    margin-bottom: 0.5rem !important;
     padding-bottom: 0.35rem !important;
   }
 
   .slide-title {
-    font-size: 1.35rem !important;
+    font-size: 1.55rem !important;
+  }
+
+  .slide-subtitle {
+    font-size: 1.05rem !important;
   }
 
   .slide-footer {
-    padding-top: 0.35rem !important;
-    margin-top: auto !important;
-    font-size: 0.86rem !important;
+    padding-top: 0.4rem !important;
+    margin-top: 1rem !important;
+    font-size: 0.92rem !important;
   }
 
   /* Cards & Typography */
   .card {
     box-shadow: none !important;
     border: 1px solid #cbd5e1 !important;
-    padding: 0.75rem 0.95rem !important;
+    padding: 0.85rem 1.1rem !important;
   }
 
   .card-title {
-    font-size: 1.02rem !important;
+    font-size: 1.15rem !important;
   }
 
   .card-content {
-    font-size: 0.90rem !important;
-    line-height: 1.45 !important;
+    font-size: 1.02rem !important;
+    line-height: 1.55 !important;
   }
 
   .card-content li {
-    margin-bottom: 0.32rem !important;
+    margin-bottom: 0.4rem !important;
   }
 
   .metric-callout {
@@ -1454,114 +1622,176 @@ body {
   }
 
   .metric-value {
-    font-size: 1.55rem !important;
+    font-size: 1.85rem !important;
   }
 
-  /* Architecture Slide 4 */
+  .metric-label {
+    font-size: 0.95rem !important;
+  }
+
+  /* Slide 1 Cover in Print */
+  .cover-student-card {
+    border: 2px solid #0284c7 !important;
+    box-shadow: none !important;
+    padding: 0.6rem 1.5rem !important;
+    margin-bottom: 1rem !important;
+    background: #ffffff !important;
+  }
+
+  .student-name {
+    font-size: 1.35rem !important;
+  }
+
+  .student-grade {
+    font-size: 0.98rem !important;
+  }
+
+  /* Slide 4 Architecture Split in Print: Page 1 = Huge Diagram, Page 2 = 4 Layers */
   .arch-layout {
-    gap: 1rem !important;
+    display: block !important;
   }
 
-  .arch-image-card {
-    padding: 0.5rem !important;
+  .arch-image-card.arch-diagram-hero {
+    page-break-after: always !important;
+    break-after: page !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 165mm !important;
+    padding: 6mm 10mm !important;
+    border: 1.5px solid #cbd5e1 !important;
+    box-shadow: none !important;
   }
 
-  .arch-image-card img {
-    max-height: 220px !important;
-    cursor: default !important;
+  .arch-image-card.arch-diagram-hero img {
+    max-height: 145mm !important; /* DOUBLED IN PRINT! */
+    max-width: 95% !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  .arch-caption {
+    font-size: 1.05rem !important;
+    margin-top: 0.6rem !important;
+  }
+
+  .arch-steps-list {
+    page-break-before: always !important;
+    break-before: page !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.2rem !important;
+    padding-top: 5mm !important;
   }
 
   .arch-step-item {
-    padding: 0.5rem 0.8rem !important;
-    gap: 0.7rem !important;
+    padding: 0.9rem 1.1rem !important;
+    gap: 0.9rem !important;
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: none !important;
   }
 
   .arch-step-item h4 {
-    font-size: 0.94rem !important;
+    font-size: 1.15rem !important;
   }
 
   .arch-step-item p {
-    font-size: 0.86rem !important;
-    line-height: 1.4 !important;
+    font-size: 1.02rem !important;
+    line-height: 1.5 !important;
   }
 
-  /* Slide 6 Showcase in Print */
-  .bom-showcase-grid {
+  /* Slide 6 Showcase Split in Print: Page 1 = Items 1-5, Page 2 = Items 6-10 + Total */
+  .bom-group-1 {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.35rem 0.8rem !important;
+    gap: 0.7rem 1.1rem !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    min-height: 165mm !important;
+  }
+
+  .bom-group-2 {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.7rem 1.1rem !important;
+    page-break-before: always !important;
+    break-before: page !important;
+    min-height: 165mm !important;
   }
 
   .bom-card {
-    padding: 0.35rem 0.6rem !important;
-    gap: 0.75rem !important;
+    padding: 0.65rem 0.9rem !important;
+    gap: 1rem !important;
     border: 1px solid #cbd5e1 !important;
     box-shadow: none !important;
     background: #ffffff !important;
   }
 
   .bom-card-img-wrap {
-    width: 72px !important;
-    height: 68px !important;
-    padding: 2px !important;
-    border: 1px solid #cbd5e1 !important;
+    width: 110px !important; /* MUCH LARGER IN PRINT! */
+    height: 105px !important; /* MUCH LARGER IN PRINT! */
+    padding: 3px !important;
+    border: 1.5px solid #cbd5e1 !important;
   }
 
   .bom-card-name {
-    font-size: 0.88rem !important;
+    font-size: 1.05rem !important;
   }
 
   .bom-card-sub {
-    font-size: 0.76rem !important;
+    font-size: 0.86rem !important;
   }
 
   .bom-card-desc {
-    font-size: 0.78rem !important;
-    line-height: 1.25 !important;
+    font-size: 0.88rem !important;
+    line-height: 1.35 !important;
   }
 
   .bom-card-meta {
-    margin-top: 0.2rem !important;
-    padding-top: 0.2rem !important;
+    margin-top: 0.3rem !important;
+    padding-top: 0.3rem !important;
   }
 
   .bom-card-store {
-    font-size: 0.74rem !important;
-    padding: 0.1rem 0.4rem !important;
+    font-size: 0.82rem !important;
+    padding: 0.15rem 0.5rem !important;
   }
 
   .bom-card-price {
-    font-size: 0.95rem !important;
+    font-size: 1.15rem !important;
   }
 
   .bom-total-card {
-    padding: 0.4rem 0.8rem !important;
-    margin-top: 0.35rem !important;
+    grid-column: 1 / -1 !important;
+    padding: 0.7rem 1.2rem !important;
+    margin-top: 0.6rem !important;
   }
 
   .bom-total-label {
-    font-size: 0.98rem !important;
+    font-size: 1.15rem !important;
   }
 
   .bom-total-value {
-    font-size: 1.3rem !important;
+    font-size: 1.6rem !important;
   }
 
-  /* Code Blocks Slides 7 & 8 */
+  /* Code Blocks in Print */
   .code-slide-grid {
-    gap: 1rem !important;
+    gap: 1.2rem !important;
   }
 
   .code-explanation-card {
-    padding: 0.9rem !important;
+    padding: 1rem !important;
   }
 
   .code-feature-box h5 {
-    font-size: 0.90rem !important;
+    font-size: 1.02rem !important;
   }
 
   .code-feature-box p {
-    font-size: 0.82rem !important;
+    font-size: 0.92rem !important;
   }
 
   .code-container {
@@ -1576,32 +1806,32 @@ body {
   .code-container code {
     background: #1e1e1e !important;
     color: #d4d4d4 !important;
-    font-size: 0.75rem !important;
-    line-height: 1.35 !important;
-    max-height: 320px !important;
+    font-size: 0.85rem !important;
+    line-height: 1.45 !important;
+    max-height: 380px !important;
     overflow: hidden !important;
   }
 
-  /* Energy Comparison Slide 9 */
+  /* Comparison Table in Print */
   .comparison-table-wrapper {
-    margin-bottom: 0.6rem !important;
+    margin-bottom: 0.8rem !important;
   }
 
   .comparison-table th {
-    padding: 0.5rem 0.7rem !important;
-    font-size: 0.86rem !important;
+    padding: 0.6rem 0.85rem !important;
+    font-size: 1.02rem !important;
   }
 
   .comparison-table td {
-    padding: 0.45rem 0.7rem !important;
-    font-size: 0.84rem !important;
+    padding: 0.55rem 0.85rem !important;
+    font-size: 0.98rem !important;
   }
 
   .sim-widget {
     border: 1px solid #cbd5e1 !important;
     box-shadow: none !important;
-    padding: 0.45rem 0.8rem !important;
-    margin-bottom: 0.5rem !important;
+    padding: 0.5rem 0.9rem !important;
+    margin-bottom: 0.6rem !important;
   }
 
   .sim-body {
@@ -1610,52 +1840,52 @@ body {
 
   .sim-readouts-grid {
     grid-template-columns: repeat(3, 1fr) !important;
-    gap: 0.5rem !important;
+    gap: 0.6rem !important;
   }
 
   .sim-metric-val {
-    font-size: 1.2rem !important;
+    font-size: 1.35rem !important;
   }
 
   /* QR Cards Slide 1 */
   .cover-qr-group {
-    margin-top: 0.8rem !important;
-    gap: 1.4rem !important;
+    margin-top: 1rem !important;
+    gap: 1.5rem !important;
   }
 
   .cover-qr-item {
-    padding: 0.6rem 1.2rem !important;
+    padding: 0.65rem 1.3rem !important;
     gap: 1rem !important;
     box-shadow: none !important;
     border: 1px solid #cbd5e1 !important;
   }
 
   .cover-qr-img {
-    width: 82px !important;
-    height: 82px !important;
+    width: 84px !important;
+    height: 84px !important;
   }
 
   .qr-label {
-    font-size: 1.05rem !important;
+    font-size: 1.08rem !important;
     font-weight: 800 !important;
   }
 
   .qr-sub {
-    font-size: 0.86rem !important;
+    font-size: 0.88rem !important;
   }
 
   /* Conclusion Slide 10 */
   .conclusion-summary-box {
-    padding: 0.8rem 1rem !important;
-    margin-bottom: 0.8rem !important;
+    padding: 0.9rem 1.2rem !important;
+    margin-bottom: 0.9rem !important;
   }
 
   .conclusion-summary-box h4 {
-    font-size: 1.04rem !important;
+    font-size: 1.15rem !important;
   }
 
   .conclusion-summary-box p {
-    font-size: 0.88rem !important;
+    font-size: 1.02rem !important;
   }
 }
 

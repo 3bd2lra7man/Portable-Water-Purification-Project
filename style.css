@@ -54,7 +54,7 @@
 }
 
 html {
-  font-size: 17.5px; /* Scaled up for superior presentation readability */
+  font-size: 15px; /* Optimal readability without overflowing 100vh */
   scroll-behavior: smooth;
   height: 100%;
 }

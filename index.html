@@ -778,31 +778,39 @@
     </div>
     <div class="nav-dot-item">
       <button class="nav-dot-btn" data-slide="4" aria-label="الشريحة 4"></button>
-      <span class="nav-dot-tooltip">4. هيكلية النظام</span>
+      <span class="nav-dot-tooltip">4. مخطط هيكلية النظام (Hero)</span>
     </div>
     <div class="nav-dot-item">
       <button class="nav-dot-btn" data-slide="5" aria-label="الشريحة 5"></button>
-      <span class="nav-dot-tooltip">5. بيئة التطوير</span>
+      <span class="nav-dot-tooltip">5. طبقات الهيكلية الهندسية</span>
     </div>
     <div class="nav-dot-item">
       <button class="nav-dot-btn" data-slide="6" aria-label="الشريحة 6"></button>
-      <span class="nav-dot-tooltip">6. المكونات والتكلفة (BOM)</span>
+      <span class="nav-dot-tooltip">6. بيئة التطوير (PlatformIO)</span>
     </div>
     <div class="nav-dot-item">
       <button class="nav-dot-btn" data-slide="7" aria-label="الشريحة 7"></button>
-      <span class="nav-dot-tooltip">7. كود التهيئة</span>
+      <span class="nav-dot-tooltip">7. قائمة المكونات (BOM 1)</span>
     </div>
     <div class="nav-dot-item">
       <button class="nav-dot-btn" data-slide="8" aria-label="الشريحة 8"></button>
-      <span class="nav-dot-tooltip">8. كود التحكم والغسيل</span>
+      <span class="nav-dot-tooltip">8. قائمة المكونات (BOM 2)</span>
     </div>
     <div class="nav-dot-item">
       <button class="nav-dot-btn" data-slide="9" aria-label="الشريحة 9"></button>
-      <span class="nav-dot-tooltip">9. كفاءة الطاقة والمحاكي</span>
+      <span class="nav-dot-tooltip">9. كود التهيئة والمقاطعات</span>
     </div>
     <div class="nav-dot-item">
       <button class="nav-dot-btn" data-slide="10" aria-label="الشريحة 10"></button>
-      <span class="nav-dot-tooltip">10. الخلاصة والتوصيات</span>
+      <span class="nav-dot-tooltip">10. كود التحكم والغسيل</span>
+    </div>
+    <div class="nav-dot-item">
+      <button class="nav-dot-btn" data-slide="11" aria-label="الشريحة 11"></button>
+      <span class="nav-dot-tooltip">11. كفاءة الطاقة والمحاكي</span>
+    </div>
+    <div class="nav-dot-item">
+      <button class="nav-dot-btn" data-slide="12" aria-label="الشريحة 12"></button>
+      <span class="nav-dot-tooltip">12. الخلاصة والتوصيات</span>
     </div>
   </nav>
 
@@ -834,7 +842,7 @@
           <div class="student-info">
             <span class="student-badge-role">إعداد وتطوير الطالب:</span>
             <h3 class="student-name">عبدالرحمن سعد إسماعيل شافعي</h3>
-            <span class="student-grade">الفرقة الإعدادية — كلية الهندسة</span>
+            <span class="student-grade">الفرقة الإعدادية — معهد عالي هندسة العريش</span>
           </div>
         </div>
 
@@ -884,7 +892,7 @@
           <span>المنظومة الذكية للترشيح النانوي للمياه الجوفية (NF-CPS)</span>
           <span>إعداد الطالب: عبدالرحمن سعد إسماعيل شافعي (الفرقة الإعدادية)</span>
         </div>
-        <span class="slide-page-number">01 / 10</span>
+        <span class="slide-page-number">01 / 12</span>
       </footer>
     </section>
 
@@ -958,28 +966,19 @@
           </div>
         </div>
 
-        <!-- Metrics Callout -->
-        <div class="grid-3" style="margin-top: 1.2rem;">
-          <div class="card" style="padding: 0.9rem 1.2rem;">
-            <span class="metric-label">هدر المياه في فلاتر RO التقليدية</span>
-            <div class="metric-callout">
-              <span class="metric-value" style="color: #b91c1c;">65% - 75%</span>
-              <span class="metric-label">مياه عادمة مهدورة في الصرف</span>
-            </div>
+        <!-- Metrics Strip: Compact, High-Impact Single-Row Layout -->
+        <div class="metrics-strip">
+          <div class="metric-pill">
+            <span class="metric-pill-val" style="color: #b91c1c;">65% - 75%</span>
+            <span class="metric-pill-lbl">هدر المياه في فلاتر RO التقليدية</span>
           </div>
-          <div class="card" style="padding: 0.9rem 1.2rem;">
-            <span class="metric-label">الضغط المطلوب في أغشية RO التقليدية</span>
-            <div class="metric-callout">
-              <span class="metric-value" style="color: #b45309;">80 - 120</span>
-              <span class="metric-label">PSI (يستلزم مضخات وطاقة هائلة)</span>
-            </div>
+          <div class="metric-pill">
+            <span class="metric-pill-val" style="color: #b45309;">80 - 120 PSI</span>
+            <span class="metric-pill-lbl">الضغط المطلوب في أغشية RO</span>
           </div>
-          <div class="card" style="padding: 0.9rem 1.2rem;">
-            <span class="metric-label">استهلاك صمام Solenoid التقليدي أثناء الفتح</span>
-            <div class="metric-callout">
-              <span class="metric-value" style="color: #b45309;">8.5 - 12</span>
-              <span class="metric-label">Watt (مستمر دون توقف)</span>
-            </div>
+          <div class="metric-pill">
+            <span class="metric-pill-val" style="color: #b45309;">8.5 - 12 W</span>
+            <span class="metric-pill-lbl">استهلاك صمام Solenoid المستمر</span>
           </div>
         </div>
       </div>
@@ -989,7 +988,7 @@
           <span>المنظومة الذكية للترشيح النانوي للمياه الجوفية (NF-CPS)</span>
           <span>بيان المشكلة الهندسية وتحديات معالجة المياه الصحراوية</span>
         </div>
-        <span class="slide-page-number">02 / 10</span>
+        <span class="slide-page-number">02 / 12</span>
       </footer>
     </section>
 
@@ -1081,70 +1080,89 @@
           <span>المنظومة الذكية للترشيح النانوي للمياه الجوفية (NF-CPS)</span>
           <span>الابتكار في الحل الهندسي</span>
         </div>
-        <span class="slide-page-number">03 / 10</span>
+        <span class="slide-page-number">03 / 12</span>
       </footer>
     </section>
 
     <!-- ====================================================================
-         SLIDE 4: SYSTEM ARCHITECTURE
+         SLIDE 4: SYSTEM ARCHITECTURE - HERO DIAGRAM
          ==================================================================== -->
-    <section id="slide-4" class="slide" aria-label="هيكلية النظام">
+    <section id="slide-4" class="slide" aria-label="مخطط هيكلية النظام">
       <header class="slide-header">
         <div class="slide-title-group">
-          <h2 class="slide-title">هيكلية النظام السيبراني-الفيزيائي (System Architecture)</h2>
-          <span class="slide-subtitle">Hydraulic Flow Path &amp; Electronic Control Telemetry</span>
+          <h2 class="slide-title">مخطط هيكلية النظام السيبراني-الفيزيائي (System Architecture)</h2>
+          <span class="slide-subtitle">Cyber-Physical Integration Architecture (NF Membrane &amp; BLDC Pump Digital Control)</span>
         </div>
         <span class="slide-badge">الشريحة 04</span>
       </header>
 
       <div class="slide-content-wrapper">
-        <div class="arch-layout">
-          <!-- Architecture Diagram (Enlarged Hero - Doubled Visual Scale) -->
-          <div class="arch-image-card arch-diagram-hero">
-            <img src="assets/images/project_diagram.png" alt="مخطط هيكلية النظام السيبراني-الفيزيائي" title="انقر لتكبير المخطط بالحجم الكامل" loading="lazy" class="arch-diagram-img-large">
-            <span class="arch-caption">Cyber-Physical Integration Architecture (NF Membrane &amp; BLDC Pump Digital Control System)</span>
+        <div class="arch-diagram-hero-container">
+          <img src="assets/images/project_diagram.png" alt="مخطط هيكلية النظام السيبراني-الفيزيائي" title="انقر لتكبير المخطط بالحجم الكامل" loading="eager" class="arch-diagram-img-hero">
+          <span class="arch-caption">Cyber-Physical Integration Architecture (NF Membrane &amp; BLDC Pump Digital Control System)</span>
+        </div>
+      </div>
+
+      <footer class="slide-footer">
+        <div class="slide-footer-meta">
+          <span>المنظومة الذكية للترشيح النانوي للمياه الجوفية (NF-CPS)</span>
+          <span>مخطط هيكلية النظام السيبراني-الفيزيائي</span>
+        </div>
+        <span class="slide-page-number">04 / 12</span>
+      </footer>
+    </section>
+
+    <!-- ====================================================================
+         SLIDE 5: SYSTEM ARCHITECTURE - 4 IMPLEMENTATION LAYERS
+         ==================================================================== -->
+    <section id="slide-5" class="slide" aria-label="الطبقات الهندسية للنظام">
+      <header class="slide-header">
+        <div class="slide-title-group">
+          <h2 class="slide-title">الطبقات الهندسية للنظام السيبراني-الفيزيائي</h2>
+          <span class="slide-subtitle">Physical, Telemetry, Actuation &amp; User Interface Layers</span>
+        </div>
+        <span class="slide-badge">الشريحة 05</span>
+      </header>
+
+      <div class="slide-content-wrapper">
+        <div class="arch-steps-grid-2x2">
+          <div class="arch-step-item">
+            <span class="step-num">1</span>
+            <div class="step-info">
+              <h4>المسار الهيدروليكي المادي (Hydraulic Flow Path)</h4>
+              <p>
+                تدفق المياه الخام (Feed Water) عبر مرحلة ترشيح أولي (5µm + كربون نشط) لحجز العوالق والكلور، ثم تُضخ بمضخة 24V BLDC نحو غشاء الترشيح النانوي (NF Membrane 30-50 PSI) لفرزها إلى مياه صالحة (Permeate) ومياه مركزة (Brine).
+              </p>
+            </div>
           </div>
 
-          <!-- Architecture Steps & Explanation -->
-          <div class="arch-steps-list">
-            <div class="arch-step-item">
-              <span class="step-num">1</span>
-              <div class="step-info">
-                <h4>المسار الهيدروليكي المادي (Hydraulic Flow Path)</h4>
-                <p>
-                  تدفق المياه الخام (Feed Water) عبر مرحلة ترشيح أولي (5µm + كربون نشط) لحجز العوالق والكلور، ثم تُضخ بمضخة 24V BLDC نحو غشاء الترشيح النانوي (NF Membrane 30-50 PSI) لفرزها إلى مياه صالحة (Permeate) ومياه مركزة (Brine).
-                </p>
-              </div>
+          <div class="arch-step-item">
+            <span class="step-num">2</span>
+            <div class="step-info">
+              <h4>طبقة الاستشعار والقياس عن بعد (Telemetry Layer)</h4>
+              <p>
+                مستشعر INA219 يراقب جهد وتيار المضخة عبر ناقل I2C الرقمي. مستشعرات التدفق YF-S201 ترسل نبضات فورية لمقاطعات الهاردوير (Hardware Interrupts)، مع قراءة التوصيلية الملحية (Analog TDS).
+              </p>
             </div>
+          </div>
 
-            <div class="arch-step-item">
-              <span class="step-num">2</span>
-              <div class="step-info">
-                <h4>طبقة الاستشعار والقياس عن بعد (Telemetry Layer)</h4>
-                <p>
-                  مستشعر INA219 يراقب جهد وتيار المضخة عبر ناقل I2C الرقمي. مستشعرات التدفق YF-S201 ترسل نبضات فورية لمقاطعات الهاردوير (Hardware Interrupts)، مع قراءة التوصيلية الملحية (Analog TDS).
-                </p>
-              </div>
+          <div class="arch-step-item">
+            <span class="step-num">3</span>
+            <div class="step-info">
+              <h4>طبقة التحكم والتنفيذ (Actuation &amp; Control Loop)</h4>
+              <p>
+                المتحكم ESP32-S3 يولد إشارات PWM عالية التردد لوحدة LR7843 لتعديل سرعة المضخة، ويتحكم بفتح الصمام الكروي الآلي CWX-15Q لتصريف المياه المركزة أو إجراء الغسيل الآلي التلقائي.
+              </p>
             </div>
+          </div>
 
-            <div class="arch-step-item">
-              <span class="step-num">3</span>
-              <div class="step-info">
-                <h4>طبقة التحكم والتنفيذ (Actuation &amp; Control Loop)</h4>
-                <p>
-                  المتحكم ESP32-S3 يولد إشارات PWM عالية التردد لوحدة LR7843 لتعديل سرعة المضخة، ويتحكم بفتح الصمام الكروي الآلي CWX-15Q لتصريف المياه المركزة أو إجراء الغسيل الآلي التلقائي.
-                </p>
-              </div>
-            </div>
-
-            <div class="arch-step-item">
-              <span class="step-num">4</span>
-              <div class="step-info">
-                <h4>واجهة التفاعل البصري (User Interface &amp; TFT)</h4>
-                <p>
-                  شاشة ILI9341 2.8" SPI TFT تعرض بصرياً معدل التدفق اللحظي، كمية الأملاح المزالة، واستهلاك القدرة الكهربائية بالواط وساعات التشغيل.
-                </p>
-              </div>
+          <div class="arch-step-item">
+            <span class="step-num">4</span>
+            <div class="step-info">
+              <h4>واجهة التفاعل البصري (User Interface &amp; TFT)</h4>
+              <p>
+                شاشة ILI9341 2.8" SPI TFT تعرض بصرياً معدل التدفق اللحظي، كمية الأملاح المزالة، واستهلاك القدرة الكهربائية بالواط وساعات التشغيل.
+              </p>
             </div>
           </div>
         </div>
@@ -1153,22 +1171,22 @@
       <footer class="slide-footer">
         <div class="slide-footer-meta">
           <span>المنظومة الذكية للترشيح النانوي للمياه الجوفية (NF-CPS)</span>
-          <span>هيكلية النظام الهندسية</span>
+          <span>الطبقات الهندسية للنظام</span>
         </div>
-        <span class="slide-page-number">04 / 10</span>
+        <span class="slide-page-number">05 / 12</span>
       </footer>
     </section>
 
     <!-- ====================================================================
-         SLIDE 5: DEVELOPMENT ENVIRONMENT (PLATFORMIO & VS CODE)
+         SLIDE 6: DEVELOPMENT ENVIRONMENT (PLATFORMIO & VS CODE)
          ==================================================================== -->
-    <section id="slide-5" class="slide" aria-label="بيئة التطوير">
+    <section id="slide-6" class="slide" aria-label="بيئة التطوير">
       <header class="slide-header">
         <div class="slide-title-group">
           <h2 class="slide-title">بيئة التطوير والبرمجة المدمجة (PlatformIO &amp; VS Code)</h2>
           <span class="slide-subtitle">Modern Embedded C++ Engineering Ecosystem</span>
         </div>
-        <span class="slide-badge">الشريحة 05</span>
+        <span class="slide-badge">الشريحة 06</span>
       </header>
 
       <div class="slide-content-wrapper">
@@ -1261,216 +1279,111 @@ lib_deps =
           <span>المنظومة الذكية للترشيح النانوي للمياه الجوفية (NF-CPS)</span>
           <span>بيئة التطوير والبرمجة المدمجة</span>
         </div>
-        <span class="slide-page-number">05 / 10</span>
+        <span class="slide-page-number">06 / 12</span>
       </footer>
     </section>
 
     <!-- ====================================================================
-         SLIDE 6: BILL OF MATERIALS (BOM) & REAL EGYPTIAN MARKET PRICES
+         SLIDE 7: BILL OF MATERIALS (BOM) - PART 1
          ==================================================================== -->
-    <section id="slide-6" class="slide" aria-label="قائمة المكونات والتكلفة">
+    <section id="slide-7" class="slide" aria-label="قائمة المكونات: المعالجة والترشيح">
       <header class="slide-header">
         <div class="slide-title-group">
-          <h2 class="slide-title">قائمة المكونات والتكلفة الفعلية بالسوق المصري (BOM)</h2>
-          <span class="slide-subtitle">Bill of Materials, Component Sourcing &amp; Capital Cost</span>
+          <h2 class="slide-title">قائمة المكونات والتكلفة: المعالجة والترشيح (BOM - Part 1)</h2>
+          <span class="slide-subtitle">Core Processing, Hydraulic Pumping &amp; Membrane Filtration Sourcing</span>
         </div>
-        <span class="slide-badge">الشريحة 06</span>
+        <span class="slide-badge">الشريحة 07</span>
       </header>
 
       <div class="slide-content-wrapper">
-        <div class="bom-showcase-container">
-          <!-- Page 1 / Group 1: Core Processing & Filtration Components (Items 1 to 5) -->
-          <div class="bom-showcase-grid bom-group-1">
-            <!-- Item 1: ESP32-S3 -->
-            <div class="bom-card">
-              <div class="bom-card-img-wrap">
-                <img class="bom-card-img" src="assets/images/esp32_s3.jpg" alt="ESP32-S3 Dev Board" title="انقر لتكبير الصورة">
-              </div>
-              <div class="bom-card-info">
-                <div class="bom-card-title-row">
-                  <span class="bom-card-name">ESP32-S3-WROOM-1 Dev Board</span>
-                  <span class="bom-card-price">500.00 EGP</span>
-                </div>
-                <span class="bom-card-sub">16MB Flash, 8MB PSRAM Dual-Core</span>
-                <p class="bom-card-desc">وحدة المعالجة الرئيسية وتنفيذ خوارزميات التحكم والاتصال</p>
-                <div class="bom-card-meta">
-                  <span class="bom-card-store">RAM Electronics</span>
-                </div>
-              </div>
+        <div class="bom-grid-5">
+          <!-- Item 1: ESP32-S3 -->
+          <div class="bom-card">
+            <div class="bom-card-img-wrap">
+              <img class="bom-card-img" src="assets/images/esp32_s3.jpg" alt="ESP32-S3 Dev Board" title="انقر لتكبير الصورة">
             </div>
-
-            <!-- Item 2: YF-S201 Flow Sensor -->
-            <div class="bom-card">
-              <div class="bom-card-img-wrap">
-                <img class="bom-card-img" src="assets/images/yf_s201_flow_sensor.jpg" alt="YF-S201 Water Flow Sensor" title="انقر لتكبير الصورة">
+            <div class="bom-card-info">
+              <div class="bom-card-title-row">
+                <span class="bom-card-name">ESP32-S3-WROOM-1 Dev Board</span>
+                <span class="bom-card-price">500.00 EGP</span>
               </div>
-              <div class="bom-card-info">
-                <div class="bom-card-title-row">
-                  <span class="bom-card-name">YF-S201 G1/2" Water Flow Sensor</span>
-                  <span class="bom-card-price">200.00 EGP</span>
-                </div>
-                <span class="bom-card-sub">مستشعر تدفق بتأثير هول</span>
-                <p class="bom-card-desc">حساب معدل التدفق التراكمي واللحظي عبر مقاطعات الهاردوير بدقة عالية</p>
-                <div class="bom-card-meta">
-                  <span class="bom-card-store">RAM Electronics</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Item 3: Vontron NF Membrane -->
-            <div class="bom-card">
-              <div class="bom-card-img-wrap">
-                <img class="bom-card-img" src="assets/images/vontron_nf_membrane.jpg" alt="Vontron NF Membrane" title="انقر لتكبير الصورة">
-              </div>
-              <div class="bom-card-info">
-                <div class="bom-card-title-row">
-                  <span class="bom-card-name">Vontron NF Membrane 1812-50 GPD</span>
-                  <span class="bom-card-price">750.00 EGP</span>
-                </div>
-                <span class="bom-card-sub">غشاء الترشيح النانوي الأيوني</span>
-                <p class="bom-card-desc">حجز أيونات العسر والمعادن الثقيلة وتمرير المياه النقية بضغط 40 PSI</p>
-                <div class="bom-card-meta">
-                  <span class="bom-card-store">Egyptian Water Filter Suppliers</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Item 4: Analog TDS Sensor -->
-            <div class="bom-card">
-              <div class="bom-card-img-wrap">
-                <img class="bom-card-img" src="assets/images/analog_tds_sensor.jpg" alt="Analog TDS Sensor Meter" title="انقر لتكبير الصورة">
-              </div>
-              <div class="bom-card-info">
-                <div class="bom-card-title-row">
-                  <span class="bom-card-name">Analog TDS Sensor Meter V1.0</span>
-                  <span class="bom-card-price">450.00 EGP</span>
-                </div>
-                <span class="bom-card-sub">مستشعر إجمالي الأملاح الذائبة</span>
-                <p class="bom-card-desc">قياس نقاء وجودة المياه ومراقبة نسبة استخلاص الأملاح في الزمن الحقيقي</p>
-                <div class="bom-card-meta">
-                  <span class="bom-card-store">RAM Electronics</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Item 5: 24V BLDC Pump -->
-            <div class="bom-card">
-              <div class="bom-card-img-wrap">
-                <img class="bom-card-img" src="assets/images/bldc_pump_24v.jpg" alt="24V Brushless Variable Boost Pump" title="انقر لتكبير الصورة">
-              </div>
-              <div class="bom-card-info">
-                <div class="bom-card-title-row">
-                  <span class="bom-card-name">24V Brushless Variable Boost Pump</span>
-                  <span class="bom-card-price">1,200.00 EGP</span>
-                </div>
-                <span class="bom-card-sub">مضخة تعزيز متغيرة السرعة</span>
-                <p class="bom-card-desc">توفير الضغط الهيدروليكي المناسب للغشاء مع تحكم سلس عبر PWM</p>
-                <div class="bom-card-meta">
-                  <span class="bom-card-store">Future Electronics / Automation</span>
-                </div>
+              <span class="bom-card-sub">16MB Flash, 8MB PSRAM Dual-Core</span>
+              <p class="bom-card-desc">وحدة المعالجة الرئيسية وتنفيذ خوارزميات التحكم والاتصال</p>
+              <div class="bom-card-meta">
+                <span class="bom-card-store">RAM Electronics</span>
               </div>
             </div>
           </div>
 
-          <!-- Page 2 / Group 2: Display, Actuation & Power Management (Items 6 to 10 + Total) -->
-          <div class="bom-showcase-grid bom-group-2">
-            <!-- Item 6: ILI9341 TFT Display -->
-            <div class="bom-card">
-              <div class="bom-card-img-wrap">
-                <img class="bom-card-img" src="assets/images/ili9341_tft_display.jpg" alt="ILI9341 TFT Color Display" title="انقر لتكبير الصورة">
+          <!-- Item 2: YF-S201 Flow Sensor -->
+          <div class="bom-card">
+            <div class="bom-card-img-wrap">
+              <img class="bom-card-img" src="assets/images/yf_s201_flow_sensor.jpg" alt="YF-S201 Water Flow Sensor" title="انقر لتكبير الصورة">
+            </div>
+            <div class="bom-card-info">
+              <div class="bom-card-title-row">
+                <span class="bom-card-name">YF-S201 G1/2" Water Flow Sensor</span>
+                <span class="bom-card-price">200.00 EGP</span>
               </div>
-              <div class="bom-card-info">
-                <div class="bom-card-title-row">
-                  <span class="bom-card-name">ILI9341 2.8" SPI TFT Color Display</span>
-                  <span class="bom-card-price">650.00 EGP</span>
-                </div>
-                <span class="bom-card-sub">شاشة عرض ملونة 240x320</span>
-                <p class="bom-card-desc">عرض المؤشرات التشغيلية والرسوم البيانية وحالة النظام محلياً</p>
-                <div class="bom-card-meta">
-                  <span class="bom-card-store">RAM Electronics</span>
-                </div>
+              <span class="bom-card-sub">مستشعر تدفق بتأثير هول</span>
+              <p class="bom-card-desc">حساب معدل التدفق التراكمي واللحظي عبر مقاطعات الهاردوير بدقة عالية</p>
+              <div class="bom-card-meta">
+                <span class="bom-card-store">RAM Electronics</span>
               </div>
             </div>
+          </div>
 
-            <!-- Item 7: CWX-15Q Motorized Ball Valve -->
-            <div class="bom-card">
-              <div class="bom-card-img-wrap">
-                <img class="bom-card-img" src="assets/images/cwx15q_ball_valve.jpg" alt="CWX-15Q Motorized Ball Valve" title="انقر لتكبير الصورة">
+          <!-- Item 3: Vontron NF Membrane -->
+          <div class="bom-card">
+            <div class="bom-card-img-wrap">
+              <img class="bom-card-img" src="assets/images/vontron_nf_membrane.jpg" alt="Vontron NF Membrane" title="انقر لتكبير الصورة">
+            </div>
+            <div class="bom-card-info">
+              <div class="bom-card-title-row">
+                <span class="bom-card-name">Vontron NF Membrane 1812-50 GPD</span>
+                <span class="bom-card-price">750.00 EGP</span>
               </div>
-              <div class="bom-card-info">
-                <div class="bom-card-title-row">
-                  <span class="bom-card-name">CWX-15Q 1/2" Motorized Ball Valve</span>
-                  <span class="bom-card-price">499.00 EGP</span>
-                </div>
-                <span class="bom-card-sub">صمام كروي آلي 0-Watt Holding</span>
-                <p class="bom-card-desc">التحكم في تصريف المياه المركزة وإجراء الغسيل العكسي بصفر واط تثبيت</p>
-                <div class="bom-card-meta">
-                  <span class="bom-card-store">Egyptian Industrial Automation</span>
-                </div>
+              <span class="bom-card-sub">غشاء الترشيح النانوي الأيوني</span>
+              <p class="bom-card-desc">حجز أيونات العسر والمعادن الثقيلة وتمرير المياه النقية بضغط 40 PSI</p>
+              <div class="bom-card-meta">
+                <span class="bom-card-store">Egyptian Water Filter Suppliers</span>
               </div>
             </div>
+          </div>
 
-            <!-- Item 8: LR7843 MOSFET -->
-            <div class="bom-card">
-              <div class="bom-card-img-wrap">
-                <img class="bom-card-img" src="assets/images/lr7843_mosfet.jpg" alt="LR7843 Isolated MOSFET" title="انقر لتكبير الصورة">
+          <!-- Item 4: Analog TDS Sensor -->
+          <div class="bom-card">
+            <div class="bom-card-img-wrap">
+              <img class="bom-card-img" src="assets/images/analog_tds_sensor.jpg" alt="Analog TDS Sensor Meter" title="انقر لتكبير الصورة">
+            </div>
+            <div class="bom-card-info">
+              <div class="bom-card-title-row">
+                <span class="bom-card-name">Analog TDS Sensor Meter V1.0</span>
+                <span class="bom-card-price">450.00 EGP</span>
               </div>
-              <div class="bom-card-info">
-                <div class="bom-card-title-row">
-                  <span class="bom-card-name">LR7843 15A 400W MOSFET Module</span>
-                  <span class="bom-card-price">45.00 EGP</span>
-                </div>
-                <span class="bom-card-sub">وحدة قيادة وتبديل عالي السرعة</span>
-                <p class="bom-card-desc">توصيل إشارات PWM من المتحكم إلى محرك المضخة مع عزل بصري وحراري</p>
-                <div class="bom-card-meta">
-                  <span class="bom-card-store">RAM Electronics</span>
-                </div>
+              <span class="bom-card-sub">مستشعر إجمالي الأملاح الذائبة</span>
+              <p class="bom-card-desc">قياس نقاء وجودة المياه ومراقبة نسبة استخلاص الأملاح في الزمن الحقيقي</p>
+              <div class="bom-card-meta">
+                <span class="bom-card-store">RAM Electronics</span>
               </div>
             </div>
+          </div>
 
-            <!-- Item 9: INA219 Current & Power Sensor -->
-            <div class="bom-card">
-              <div class="bom-card-img-wrap">
-                <img class="bom-card-img" src="assets/images/ina219_sensor.jpg" alt="INA219 I2C Power Sensor" title="انقر لتكبير الصورة">
-              </div>
-              <div class="bom-card-info">
-                <div class="bom-card-title-row">
-                  <span class="bom-card-name">INA219 I2C Current &amp; Power Sensor</span>
-                  <span class="bom-card-price">185.00 EGP</span>
-                </div>
-                <span class="bom-card-sub">حساس قياس الجهد والتيار اللحظي</span>
-                <p class="bom-card-desc">مراقبة استهلاك قدرة المضخة واكتشاف الحمل الزائد أو الانسداد مبكراً</p>
-                <div class="bom-card-meta">
-                  <span class="bom-card-store">Future Electronics / Amazon.eg</span>
-                </div>
-              </div>
+          <!-- Item 5: 24V BLDC Pump -->
+          <div class="bom-card">
+            <div class="bom-card-img-wrap">
+              <img class="bom-card-img" src="assets/images/bldc_pump_24v.jpg" alt="24V Brushless Variable Boost Pump" title="انقر لتكبير الصورة">
             </div>
-
-            <!-- Item 10: LM2596 Buck Converter -->
-            <div class="bom-card">
-              <div class="bom-card-img-wrap">
-                <img class="bom-card-img" src="assets/images/lm2596_buck_converter.jpg" alt="LM2596 Step-Down Buck Converter" title="انقر لتكبير الصورة">
+            <div class="bom-card-info">
+              <div class="bom-card-title-row">
+                <span class="bom-card-name">24V Brushless Variable Boost Pump</span>
+                <span class="bom-card-price">1,200.00 EGP</span>
               </div>
-              <div class="bom-card-info">
-                <div class="bom-card-title-row">
-                  <span class="bom-card-name">LM2596HVS Step-Down Buck</span>
-                  <span class="bom-card-price">65.00 EGP</span>
-                </div>
-                <span class="bom-card-sub">مخفض جهد عالي الكفاءة (حتى 60V)</span>
-                <p class="bom-card-desc">تنظيم جهد التغذية من 24V إلى 5V/3.3V لتشغيل المعالج والمستشعرات</p>
-                <div class="bom-card-meta">
-                  <span class="bom-card-store">RAM Electronics</span>
-                </div>
+              <span class="bom-card-sub">مضخة تعزيز متغيرة السرعة</span>
+              <p class="bom-card-desc">توفير الضغط الهيدروليكي المناسب للغشاء مع تحكم سلس عبر PWM</p>
+              <div class="bom-card-meta">
+                <span class="bom-card-store">Future Electronics / Automation</span>
               </div>
-            </div>
-
-            <!-- Total Cost Banner -->
-            <div class="bom-total-card">
-              <div>
-                <span class="bom-total-label">إجمالي تكلفة المكونات الهندسية للمنظومة (Total Prototype Cost)</span>
-                <div style="font-size: 0.92rem; opacity: 0.9; margin-top: 0.2rem;">الأسعار مستخرجة ومحدثة فعلياً من المتاجر الإلكترونية بالسوق المصري</div>
-              </div>
-              <span class="bom-total-value">4,544.00 EGP</span>
             </div>
           </div>
         </div>
@@ -1479,22 +1392,146 @@ lib_deps =
       <footer class="slide-footer">
         <div class="slide-footer-meta">
           <span>المنظومة الذكية للترشيح النانوي للمياه الجوفية (NF-CPS)</span>
-          <span>قائمة المكونات والتكلفة التقديرية</span>
+          <span>قائمة المكونات والتكلفة الفعلية (الجزء الأول)</span>
         </div>
-        <span class="slide-page-number">06 / 10</span>
+        <span class="slide-page-number">07 / 12</span>
       </footer>
     </section>
 
     <!-- ====================================================================
-         SLIDE 7: CORE FIRMWARE - INITIALIZATION & HARDWARE SETUP
+         SLIDE 8: BILL OF MATERIALS (BOM) - PART 2
          ==================================================================== -->
-    <section id="slide-7" class="slide" aria-label="الكود الأساسي: التهيئة">
+    <section id="slide-8" class="slide" aria-label="قائمة المكونات: التحكم والواجهة">
+      <header class="slide-header">
+        <div class="slide-title-group">
+          <h2 class="slide-title">قائمة المكونات والتكلفة: التحكم والواجهة (BOM - Part 2)</h2>
+          <span class="slide-subtitle">Display, Actuation, Power Management &amp; Total Prototype Cost</span>
+        </div>
+        <span class="slide-badge">الشريحة 08</span>
+      </header>
+
+      <div class="slide-content-wrapper">
+        <div class="bom-grid-5">
+          <!-- Item 6: ILI9341 TFT Display -->
+          <div class="bom-card">
+            <div class="bom-card-img-wrap">
+              <img class="bom-card-img" src="assets/images/ili9341_tft_display.jpg" alt="ILI9341 TFT Color Display" title="انقر لتكبير الصورة">
+            </div>
+            <div class="bom-card-info">
+              <div class="bom-card-title-row">
+                <span class="bom-card-name">ILI9341 2.8" SPI TFT Color Display</span>
+                <span class="bom-card-price">650.00 EGP</span>
+              </div>
+              <span class="bom-card-sub">شاشة عرض ملونة 240x320</span>
+              <p class="bom-card-desc">عرض المؤشرات التشغيلية والرسوم البيانية وحالة النظام محلياً</p>
+              <div class="bom-card-meta">
+                <span class="bom-card-store">RAM Electronics</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 7: CWX-15Q Motorized Ball Valve -->
+          <div class="bom-card">
+            <div class="bom-card-img-wrap">
+              <img class="bom-card-img" src="assets/images/cwx15q_ball_valve.jpg" alt="CWX-15Q Motorized Ball Valve" title="انقر لتكبير الصورة">
+            </div>
+            <div class="bom-card-info">
+              <div class="bom-card-title-row">
+                <span class="bom-card-name">CWX-15Q 1/2" Motorized Ball Valve</span>
+                <span class="bom-card-price">499.00 EGP</span>
+              </div>
+              <span class="bom-card-sub">صمام كروي آلي 0-Watt Holding</span>
+              <p class="bom-card-desc">التحكم في تصريف المياه المركزة وإجراء الغسيل العكسي بصفر واط تثبيت</p>
+              <div class="bom-card-meta">
+                <span class="bom-card-store">Egyptian Industrial Automation</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 8: LR7843 MOSFET -->
+          <div class="bom-card">
+            <div class="bom-card-img-wrap">
+              <img class="bom-card-img" src="assets/images/lr7843_mosfet.jpg" alt="LR7843 Isolated MOSFET" title="انقر لتكبير الصورة">
+            </div>
+            <div class="bom-card-info">
+              <div class="bom-card-title-row">
+                <span class="bom-card-name">LR7843 15A 400W MOSFET Module</span>
+                <span class="bom-card-price">45.00 EGP</span>
+              </div>
+              <span class="bom-card-sub">وحدة قيادة وتبديل عالي السرعة</span>
+              <p class="bom-card-desc">توصيل إشارات PWM من المتحكم إلى محرك المضخة مع عزل بصري وحراري</p>
+              <div class="bom-card-meta">
+                <span class="bom-card-store">RAM Electronics</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 9: INA219 Current & Power Sensor -->
+          <div class="bom-card">
+            <div class="bom-card-img-wrap">
+              <img class="bom-card-img" src="assets/images/ina219_sensor.jpg" alt="INA219 I2C Power Sensor" title="انقر لتكبير الصورة">
+            </div>
+            <div class="bom-card-info">
+              <div class="bom-card-title-row">
+                <span class="bom-card-name">INA219 I2C Current &amp; Power Sensor</span>
+                <span class="bom-card-price">185.00 EGP</span>
+              </div>
+              <span class="bom-card-sub">حساس قياس الجهد والتيار اللحظي</span>
+              <p class="bom-card-desc">مراقبة استهلاك قدرة المضخة واكتشاف الحمل الزائد أو الانسداد مبكراً</p>
+              <div class="bom-card-meta">
+                <span class="bom-card-store">Future Electronics / Amazon.eg</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 10: LM2596 Buck Converter -->
+          <div class="bom-card">
+            <div class="bom-card-img-wrap">
+              <img class="bom-card-img" src="assets/images/lm2596_buck_converter.jpg" alt="LM2596 Step-Down Buck Converter" title="انقر لتكبير الصورة">
+            </div>
+            <div class="bom-card-info">
+              <div class="bom-card-title-row">
+                <span class="bom-card-name">LM2596HVS Step-Down Buck</span>
+                <span class="bom-card-price">65.00 EGP</span>
+              </div>
+              <span class="bom-card-sub">مخفض جهد عالي الكفاءة (حتى 60V)</span>
+              <p class="bom-card-desc">تنظيم جهد التغذية من 24V إلى 5V/3.3V لتشغيل المعالج والمستشعرات</p>
+              <div class="bom-card-meta">
+                <span class="bom-card-store">RAM Electronics</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Total Cost Banner -->
+          <div class="bom-total-card">
+            <div>
+              <span class="bom-total-label">إجمالي تكلفة المكونات الهندسية للمنظومة (Total Prototype Cost)</span>
+              <div style="font-size: 0.90rem; opacity: 0.9; margin-top: 0.15rem;">الأسعار مستخرجة ومحدثة فعلياً من المتاجر الإلكترونية بالسوق المصري</div>
+            </div>
+            <span class="bom-total-value">4,544.00 EGP</span>
+          </div>
+        </div>
+      </div>
+
+      <footer class="slide-footer">
+        <div class="slide-footer-meta">
+          <span>المنظومة الذكية للترشيح النانوي للمياه الجوفية (NF-CPS)</span>
+          <span>قائمة المكونات والتكلفة الإجمالية (الجزء الثاني)</span>
+        </div>
+        <span class="slide-page-number">08 / 12</span>
+      </footer>
+    </section>
+
+    <!-- ====================================================================
+         SLIDE 9: CORE FIRMWARE - INITIALIZATION & HARDWARE SETUP
+         ==================================================================== -->
+    <section id="slide-9" class="slide" aria-label="الكود الأساسي: التهيئة">
       <header class="slide-header">
         <div class="slide-title-group">
           <h2 class="slide-title">البرمجيات المدمجة: التهيئة والمقاطعات (System Initialization)</h2>
           <span class="slide-subtitle">Hardware Bus Setup, PWM Timer &amp; ISR Configuration</span>
         </div>
-        <span class="slide-badge">الشريحة 07</span>
+        <span class="slide-badge">الشريحة 09</span>
       </header>
 
       <div class="slide-content-wrapper">
@@ -1612,20 +1649,20 @@ void setupSystemHardware() {
           <span>المنظومة الذكية للترشيح النانوي للمياه الجوفية (NF-CPS)</span>
           <span>الكود الأساسي: تهيئة العتاد</span>
         </div>
-        <span class="slide-page-number">07 / 10</span>
+        <span class="slide-page-number">09 / 12</span>
       </footer>
     </section>
 
     <!-- ====================================================================
-         SLIDE 8: CORE FIRMWARE - CONTROL ALGORITHM & AUTO-FLUSH ROUTINE
+         SLIDE 10: CORE FIRMWARE - CONTROL ALGORITHM & AUTO-FLUSH ROUTINE
          ==================================================================== -->
-    <section id="slide-8" class="slide" aria-label="الكود الأساسي: التحكم">
+    <section id="slide-10" class="slide" aria-label="الكود الأساسي: التحكم">
       <header class="slide-header">
         <div class="slide-title-group">
           <h2 class="slide-title">البرمجيات المدمجة: خوارزمية التحكم والغسيل الآلي</h2>
           <span class="slide-subtitle">Closed-Loop Flow Regulation &amp; Automated Membrane Flush</span>
         </div>
-        <span class="slide-badge">الشريحة 08</span>
+        <span class="slide-badge">الشريحة 10</span>
       </header>
 
       <div class="slide-content-wrapper">
@@ -1738,20 +1775,20 @@ void processSystemControlLoop() {
           <span>المنظومة الذكية للترشيح النانوي للمياه الجوفية (NF-CPS)</span>
           <span>الكود الأساسي: خوارزمية التحكم</span>
         </div>
-        <span class="slide-page-number">08 / 10</span>
+        <span class="slide-page-number">10 / 12</span>
       </footer>
     </section>
 
     <!-- ====================================================================
-         SLIDE 9: ENERGY EFFICIENCY & PERFORMANCE ANALYSIS + SIMULATOR
+         SLIDE 11: ENERGY EFFICIENCY & PERFORMANCE ANALYSIS + SIMULATOR
          ==================================================================== -->
-    <section id="slide-9" class="slide" aria-label="تحليل كفاءة الطاقة">
+    <section id="slide-11" class="slide" aria-label="تحليل كفاءة الطاقة">
       <header class="slide-header">
         <div class="slide-title-group">
           <h2 class="slide-title">تحليل كفاءة الطاقة ومقارنة الأداء الهندسي</h2>
           <span class="slide-subtitle">Quantitative Power Efficiency &amp; Recovery Ratio Benchmarks</span>
         </div>
-        <span class="slide-badge">الشريحة 09</span>
+        <span class="slide-badge">الشريحة 11</span>
       </header>
 
       <div class="slide-content-wrapper">
@@ -1801,7 +1838,7 @@ void processSystemControlLoop() {
           </table>
         </div>
 
-        <!-- Interactive Telemetry & Energy Simulator (Slide 9 Exclusive) -->
+        <!-- Interactive Telemetry & Energy Simulator (Slide 11 Exclusive) -->
         <div class="sim-widget">
           <div class="sim-header">
             <span class="sim-title">
@@ -1888,20 +1925,20 @@ void processSystemControlLoop() {
           <span>المنظومة الذكية للترشيح النانوي للمياه الجوفية (NF-CPS)</span>
           <span>تحليل كفاءة الطاقة والجدوى الهندسية</span>
         </div>
-        <span class="slide-page-number">09 / 10</span>
+        <span class="slide-page-number">11 / 12</span>
       </footer>
     </section>
 
     <!-- ====================================================================
-         SLIDE 10: CONCLUSION & RECOMMENDATIONS
+         SLIDE 12: CONCLUSION & RECOMMENDATIONS
          ==================================================================== -->
-    <section id="slide-10" class="slide" aria-label="الخلاصة والتوصيات">
+    <section id="slide-12" class="slide" aria-label="الخلاصة والتوصيات">
       <header class="slide-header">
         <div class="slide-title-group">
           <h2 class="slide-title">الخلاصة والتوصيات الهندسية المستقبلية</h2>
           <span class="slide-subtitle">Project Conclusions, Key Outcomes &amp; Future Recommendations</span>
         </div>
-        <span class="slide-badge">الشريحة 10</span>
+        <span class="slide-badge">الشريحة 12</span>
       </header>
 
       <div class="slide-content-wrapper">
@@ -1956,7 +1993,7 @@ void processSystemControlLoop() {
           <span>المنظومة الذكية للترشيح النانوي للمياه الجوفية (NF-CPS)</span>
           <span>الخلاصة والتوصيات الهندسية</span>
         </div>
-        <span class="slide-page-number">10 / 10</span>
+        <span class="slide-page-number">12 / 12</span>
       </footer>
     </section>
 

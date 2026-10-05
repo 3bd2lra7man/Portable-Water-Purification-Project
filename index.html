@@ -241,41 +241,73 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 1.2rem;
-      margin-top: 0.4rem;
+      gap: 2.2rem;
+      margin-top: clamp(0.8rem, 1.8vh, 1.6rem);
     }
 
     .cover-qr-item {
       display: inline-flex;
       align-items: center;
-      gap: 0.8rem;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-medium);
+      gap: 1.2rem;
+      background: #ffffff;
+      border: 2px solid #0284c7;
       border-radius: var(--radius-md);
-      padding: 0.35rem 0.9rem;
+      padding: 0.75rem 1.6rem;
       text-decoration: none;
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.12);
+      transition: all 0.25s ease;
+    }
+
+    .cover-qr-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(2, 132, 199, 0.22);
+      border-color: #0369a1;
     }
 
     .cover-qr-img {
-      width: 54px;
-      height: 54px;
+      width: 108px;
+      height: 108px;
       object-fit: contain;
+      border-radius: 6px;
+      background: #ffffff;
+      padding: 2px;
+      border: 1px solid #cbd5e1;
+    }
+
+    .cover-qr-text {
+      display: flex;
+      flex-direction: column;
+      text-align: right;
     }
 
     .qr-label {
-      font-size: 0.88rem;
+      font-size: 1.22rem;
       font-weight: 800;
-      color: var(--primary-dark);
+      color: #0c4a6e;
       display: block;
+      line-height: 1.2;
     }
 
     .qr-sub {
-      font-size: 0.74rem;
-      color: var(--text-muted);
+      font-size: 0.90rem;
+      font-weight: 600;
+      color: #0284c7;
       font-family: var(--font-latin);
       direction: ltr;
       display: block;
+      margin-top: 0.2rem;
+    }
+
+    .qr-hint {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #64748b;
+      margin-top: 0.35rem;
+      display: inline-block;
+      background: #f1f5f9;
+      padding: 0.15rem 0.55rem;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
     }
 
     /* Slide 2 Metrics Strip */
@@ -674,10 +706,12 @@
       .cover-description { font-size: 0.90rem !important; line-height: 1.45 !important; margin-bottom: 0.5rem !important; }
       .cover-student-card { padding: 0.35rem 1.2rem !important; margin-bottom: 0.5rem !important; }
       .cover-tech-pills { margin-bottom: 0.5rem !important; }
-      .cover-meta-grid { padding: 0.4rem 1rem !important; margin-bottom: 0.5rem !important; }
-      .cover-qr-group { margin-top: 0.35rem !important; }
-      .cover-qr-img { width: 52px !important; height: 52px !important; }
-      .cover-qr-item { padding: 0.3rem 0.8rem !important; }
+      .cover-qr-group { margin-top: 0.5rem !important; gap: 1.8rem !important; }
+      .cover-qr-img { width: 85px !important; height: 85px !important; }
+      .cover-qr-item { padding: 0.45rem 1.2rem !important; border: 1.5px solid #0284c7 !important; border-radius: 10px !important; }
+      .qr-label { font-size: 1.08rem !important; }
+      .qr-sub { font-size: 0.82rem !important; }
+      .qr-hint { font-size: 0.72rem !important; padding: 0.1rem 0.4rem !important; }
 
       /* Slide 2 Metric Strip in Print */
       .metrics-strip { padding: 0.35rem 0.8rem !important; margin-top: 0.45rem !important; }
@@ -869,13 +903,14 @@
           </div>
         </div>
 
-        <!-- Small QR Codes for Live Demo and GitHub Repo -->
+        <!-- Enlarged Interactive QR Cards for Live Demo and GitHub Repo -->
         <div class="cover-qr-group">
           <a href="https://3bd2lra7man.github.io/Portable-Water-Purification-Project/" target="_blank" rel="noopener noreferrer" class="cover-qr-item" title="معاينة العرض التفاعلي الحي">
             <img src="assets/images/qr_live_demo.png" alt="QR Code Live Demo" class="cover-qr-img">
             <div class="cover-qr-text">
               <span class="qr-label">العرض التفاعلي الحي</span>
               <span class="qr-sub">Live Web Demo</span>
+              <span class="qr-hint">امسح للمعاينة المباشرة ↗</span>
             </div>
           </a>
           <a href="https://github.com/3bd2lra7man/Portable-Water-Purification-Project" target="_blank" rel="noopener noreferrer" class="cover-qr-item" title="المستودع الرئيسي على GitHub">
@@ -883,6 +918,7 @@
             <div class="cover-qr-text">
               <span class="qr-label">المستودع الرئيسي</span>
               <span class="qr-sub">GitHub Repository</span>
+              <span class="qr-hint">الكود المصدري والمخططات ↗</span>
             </div>
           </a>
         </div>

@@ -1849,20 +1849,21 @@ pre[class*="language-"] {
 
   /* QR Cards Slide 1 */
   .cover-qr-group {
-    margin-top: 1rem !important;
-    gap: 1.5rem !important;
+    margin-top: 0.6rem !important;
+    gap: 1.8rem !important;
   }
 
   .cover-qr-item {
-    padding: 0.65rem 1.3rem !important;
-    gap: 1rem !important;
+    padding: 0.45rem 1.2rem !important;
+    gap: 1.1rem !important;
     box-shadow: none !important;
-    border: 1px solid #cbd5e1 !important;
+    border: 1.5px solid #0284c7 !important;
+    border-radius: 10px !important;
   }
 
   .cover-qr-img {
-    width: 84px !important;
-    height: 84px !important;
+    width: 85px !important;
+    height: 85px !important;
   }
 
   .qr-label {
@@ -1871,7 +1872,12 @@ pre[class*="language-"] {
   }
 
   .qr-sub {
-    font-size: 0.88rem !important;
+    font-size: 0.82rem !important;
+  }
+
+  .qr-hint {
+    font-size: 0.72rem !important;
+    padding: 0.1rem 0.4rem !important;
   }
 
   /* Conclusion Slide 10 */
